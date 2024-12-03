@@ -16,18 +16,18 @@ CME Data Migration tool is a python based tool which requires [python 3][python3
         - Create and activate a virtual environment:
             - Windows:
                 ```bash
-                python -m venv .env
-                .env\Scripts\activate
+                >> python -m venv .env
+                >> .env\Scripts\activate
                 ```
             - macOS/Linux:
                 ```bash
-                python3 -m venv .env
-                source .env/bin/activate
+                >> python3 -m venv .env
+                >> source .env/bin/activate
                 ```
 
         - Install dependencies:
             ```bash
-            pip install -r requirements.txt
+            >> pip install -r requirements.txt
             ```
 
 ## Script Structure
