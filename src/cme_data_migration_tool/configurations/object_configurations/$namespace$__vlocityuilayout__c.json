@@ -1,0 +1,26 @@
+{
+    "objectname": "$namespace$__vlocityuilayout__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__active__c",
+        "$namespace$__author__c",
+        "$namespace$__datasource__c",
+        "$namespace$__definition__c",
+        "$namespace$__description__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__parentid__c",
+        "$namespace$__requiredpermission__c",
+        "$namespace$__type__c",
+        "$namespace$__version__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastactivitydate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": []
+}

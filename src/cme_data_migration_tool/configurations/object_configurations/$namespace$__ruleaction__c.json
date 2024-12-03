@@ -1,0 +1,62 @@
+{
+    "objectname": "$namespace$__ruleaction__c",
+    "datafieldstomigrate": [
+        "$namespace$__index__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "name",
+        "systemmodstamp",
+        "$namespace$__productconfigurationprocedureproductid__c",
+        "$namespace$__productrelationshipparentid__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__ruleid__c",
+            "fieldobject": "$namespace$__rule__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__calculationprocedureid__c",
+            "fieldobject": "$namespace$__calculationprocedure__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__entityfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__offeringprocedureid__c",
+            "fieldobject": "$namespace$__offeringprocedure__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productconfigurationprocedureid__c",
+            "fieldobject": "$namespace$__productconfigurationprocedure__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productrelationshipid__c",
+            "fieldobject": "$namespace$__productrelationship__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__ruleid__r": "$namespace$__ruleid__c",
+        "$namespace$__calculationprocedureid__r": "$namespace$__calculationprocedureid__c",
+        "$namespace$__entityfilterid__r": "$namespace$__entityfilterid__c",
+        "$namespace$__offeringprocedureid__r": "$namespace$__offeringprocedureid__c",
+        "$namespace$__productconfigurationprocedureid__r": "$namespace$__productconfigurationprocedureid__c",
+        "$namespace$__productrelationshipid__r": "$namespace$__productrelationshipid__c"
+    },
+    "childobjectstomigrate": []
+}

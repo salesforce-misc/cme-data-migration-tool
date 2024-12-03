@@ -1,0 +1,125 @@
+{
+    "objectname": "$namespace$__attributeassignment__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__adddate__c",
+        "$namespace$__data__c",
+        "$namespace$__endstory__c",
+        "$namespace$__isdynamic__c",
+        "$namespace$__objectid__c",
+        "$namespace$__objecttype__c",
+        "$namespace$__removedate__c",
+        "$namespace$__removedflag__c",
+        "$namespace$__startstory__c",
+        "$namespace$__valuedescription__c",
+        "$namespace$__value__c",
+        "$namespace$__attributeadjustmentcomments__c",
+        "$namespace$__attributeadjustmentunits__c",
+        "$namespace$__attributedisplaynameoverride__c",
+        "$namespace$__attributedisplaysequence__c",
+        "$namespace$__configurationdetail__c",
+        "$namespace$__configurationstages__c",
+        "$namespace$__customconfiguitemplate__c",
+        "$namespace$__displaysequence__c",
+        "$namespace$__excludedpicklistvalues__c",
+        "$namespace$__formatmask__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__hasrule__c",
+        "$namespace$__helptext__c",
+        "$namespace$__isactiveassignment__c",
+        "$namespace$__isconfigurable__c",
+        "$namespace$__isencrypted__c",
+        "$namespace$__ishidden__c",
+        "$namespace$__isnotassetizable__c",
+        "$namespace$__isnottranslatable__c",
+        "$namespace$__isoverride__c",
+        "$namespace$__isquerydriven__c",
+        "$namespace$__isreadonly__c",
+        "$namespace$__isrequired__c",
+        "$namespace$__lookupfilter__c",
+        "$namespace$__overridecontext__c",
+        "$namespace$__querycode__c",
+        "$namespace$__querylabel__c",
+        "$namespace$__ruledata__c",
+        "$namespace$__rulemessage__c",
+        "$namespace$__uidisplaytype__c",
+        "$namespace$__validvaluesdata__c",
+        "$namespace$__valuedatatype__c",
+        "$namespace$__valuedecoder__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__attributeuniquecode__c",
+        "$namespace$__isactive__c",
+        "$namespace$__objectlink__c",
+        "$namespace$__valueinnumber__c",
+        "$namespace$__attributecloneable__c",
+        "$namespace$__attributeconfigurable__c",
+        "$namespace$__attributefilterable__c",
+        "$namespace$__attributename__c",
+        "$namespace$__categorycode__c",
+        "$namespace$__categorydisplaysequence__c",
+        "$namespace$__categoryname__c",
+        "$namespace$__attributedisplayname__c",
+        "$namespace$__attributegrouptype__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__attributecategoryid__c",
+            "fieldobject": "$namespace$__attributecategory__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__attributeid__c",
+            "fieldobject": "$namespace$__attribute__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__defaultpicklistvalueid__c",
+            "fieldobject": "$namespace$__picklistvalue__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__lookupobjectid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__lookupobjecttypeid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__picklistid__c",
+            "fieldobject": "$namespace$__picklist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__attributecategoryid__r": "$namespace$__attributecategoryid__c",
+        "$namespace$__attributeid__r": "$namespace$__attributeid__c",
+        "$namespace$__defaultpicklistvalueid__r": "$namespace$__defaultpicklistvalueid__c",
+        "$namespace$__lookupobjectid__r": "$namespace$__lookupobjectid__c",
+        "$namespace$__lookupobjecttypeid__r": "$namespace$__lookupobjecttypeid__c",
+        "$namespace$__picklistid__r": "$namespace$__picklistid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overriddenattributeassignmentid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overridingattributeassignmentid__c"
+        }
+    ]
+}

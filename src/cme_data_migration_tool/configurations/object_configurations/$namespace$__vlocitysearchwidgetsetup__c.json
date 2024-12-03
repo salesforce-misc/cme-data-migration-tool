@@ -1,0 +1,54 @@
+{
+    "objectname": "$namespace$__vlocitysearchwidgetsetup__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__additionalresultfields__c",
+        "$namespace$__consolecardlayout__c",
+        "$namespace$__continuesearch__c",
+        "$namespace$__displaysequence__c",
+        "$namespace$__filter__c",
+        "$namespace$__interactioncreationbundlename__c",
+        "$namespace$__interactioncreationprocname__c",
+        "$namespace$__interactionobjectname__c",
+        "$namespace$__invokeclassname__c",
+        "$namespace$__isactive__c",
+        "$namespace$__label__c",
+        "$namespace$__nonwildcardsupportfields__c",
+        "$namespace$__numberofoptionalverificationfields__c",
+        "$namespace$__optionalverificationfields__c",
+        "$namespace$__previoussearchcontextidfield__c",
+        "$namespace$__previoussearchwidgetname__c",
+        "$namespace$__referenceobjectname__c",
+        "$namespace$__resultfields__c",
+        "$namespace$__resultuniquefield__c",
+        "$namespace$__resultverificationfields__c",
+        "$namespace$__searchfields__c",
+        "$namespace$__searchobjectname__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetactionssetup__c",
+            "field": "$namespace$__vlocitysearchwidgetsetupid__c"
+        }
+    ]
+}

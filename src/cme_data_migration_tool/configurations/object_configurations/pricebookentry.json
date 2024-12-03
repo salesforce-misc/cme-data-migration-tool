@@ -1,0 +1,47 @@
+{
+    "objectname": "pricebookentry",
+    "datafieldstomigrate": [
+        "unitprice",
+        "isactive",
+        "usestandardprice",
+        "$namespace$__drbundlename__c",
+        "$namespace$__drerror__c",
+        "$namespace$__drprogressdata__c",
+        "$namespace$__drstatus__c",
+        "$namespace$__floorprice__c",
+        "$namespace$__overagecharge__c",
+        "$namespace$__overageuom__c",
+        "$namespace$__recurringprice__c",
+        "$namespace$__recurringuom__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "name",
+        "systemmodstamp",
+        "productcode",
+        "isdeleted",
+        "isarchived"
+    ],
+    "createablefields": [
+    ],
+    "referencefields": [
+        {
+            "field": "pricebook2id",
+            "fieldobject": "pricebook2",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "product2id",
+            "fieldobject": "product2",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "pricebook2": "pricebook2id",
+        "product2": "product2id",
+        "productsellingmodel": "productsellingmodelid"
+    },
+    "childobjectstomigrate": []
+}

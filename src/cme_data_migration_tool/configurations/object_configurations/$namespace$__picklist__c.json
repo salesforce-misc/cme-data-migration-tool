@@ -1,0 +1,51 @@
+{
+    "objectname": "$namespace$__picklist__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__code__c",
+        "$namespace$__datatype__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalgroupkey__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isshared__c",
+        "$namespace$__lifecyclestatus__c",
+        "$namespace$__type__c",
+        "$namespace$__unitofmeasurename__c",
+        "$namespace$__versionlabel__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__picklistid__c"
+        },
+        {
+            "childsobject": "$namespace$__attribute__c",
+            "field": "$namespace$__picklistid__c"
+        },
+        {
+            "childsobject": "$namespace$__contextdimension__c",
+            "field": "$namespace$__vlocitypicklistid__c"
+        },
+        {
+            "childsobject": "$namespace$__picklistvalue__c",
+            "field": "$namespace$__picklistid__c"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunctionargument__c",
+            "field": "$namespace$__vlocitypicklistid__c"
+        }
+    ]
+}

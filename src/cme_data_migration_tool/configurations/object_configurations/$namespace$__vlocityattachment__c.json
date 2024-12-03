@@ -1,0 +1,37 @@
+{
+    "objectname": "$namespace$__vlocityattachment__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__attachmentid__c",
+        "$namespace$__channel__c",
+        "$namespace$__contenttype__c",
+        "$namespace$__description__c",
+        "$namespace$__displayconditionsdata__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isdefaultimage__c",
+        "$namespace$__isprivate__c",
+        "$namespace$__objectid__c",
+        "$namespace$__sequencenumber__c",
+        "$namespace$__urllong__c",
+        "$namespace$__url__c",
+        "$namespace$__productgroupkey__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "product2",
+            "field": "$namespace$__defaultimageid__c"
+        },
+        {
+            "childsobject": "$namespace$__uifacet__c",
+            "field": "$namespace$__iconvlocityattachmentid__c"
+        }
+    ]
+}

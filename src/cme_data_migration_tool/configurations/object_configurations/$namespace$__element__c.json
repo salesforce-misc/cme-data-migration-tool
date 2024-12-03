@@ -1,0 +1,37 @@
+{
+    "objectname": "$namespace$__element__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__active__c",
+        "$namespace$__internalnotes__c",
+        "$namespace$__level__c",
+        "$namespace$__order__c",
+        "$namespace$__propertyset__c",
+        "$namespace$__searchkey__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastactivitydate",
+        "$namespace$__omniscriptversion__c",
+        "$namespace$__parentelementname__c",
+        "$namespace$__parentelementtype__c",
+        "$namespace$__reusableomniscript__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__parentelementid__c",
+            "fieldobject": "$namespace$__element__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__omniscriptid__r": "$namespace$__omniscriptid__c",
+        "$namespace$__parentelementid__r": "$namespace$__parentelementid__c"
+    },
+    "childobjectstomigrate": []
+}

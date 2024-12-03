@@ -1,0 +1,83 @@
+{
+    "objectname": "$namespace$__productrelationship__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__actionparameters__c",
+        "$namespace$__addmode__c",
+        "$namespace$__attributemodificationcontext__c",
+        "$namespace$__context__c",
+        "$namespace$__defaultquantity__c",
+        "$namespace$__description__c",
+        "$namespace$__family__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isconditional__c",
+        "$namespace$__maxquantity__c",
+        "$namespace$__minquantity__c",
+        "$namespace$__relationshiptype__c",
+        "$namespace$__reversemaxquantity__c",
+        "$namespace$__reverseminquantity__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "$namespace$__productgroupkey__c",
+        "$namespace$__relatedproductgroupkey__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__objecttypeid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__product2id__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__relatedobjecttypeid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__relatedproductfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__relatedproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__objecttypeid__r": "$namespace$__objecttypeid__c",
+        "$namespace$__product2id__r": "$namespace$__product2id__c",
+        "$namespace$__relatedobjecttypeid__r": "$namespace$__relatedobjecttypeid__c",
+        "$namespace$__relatedproductfilterid__r": "$namespace$__relatedproductfilterid__c",
+        "$namespace$__relatedproductid__r": "$namespace$__relatedproductid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overriddenproductrelationshipid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overridingproductrelationshipid__c"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__productrelationshipid__c"
+        }
+    ]
+}

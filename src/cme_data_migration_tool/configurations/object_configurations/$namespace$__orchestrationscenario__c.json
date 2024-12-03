@@ -1,0 +1,30 @@
+{
+    "objectname": "$namespace$__orchestrationscenario__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__action__c",
+        "$namespace$__conditiondata__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__subaction__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__product2id__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__orchestrationplandefinitionid__r": "$namespace$__orchestrationplandefinitionid__c",
+        "$namespace$__orchestrationplanid__r": "$namespace$__orchestrationplanid__c",
+        "$namespace$__product2id__r": "$namespace$__product2id__c"
+    },
+    "childobjectstomigrate": []
+}

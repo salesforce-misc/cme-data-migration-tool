@@ -1,0 +1,35 @@
+{
+    "objectname": "$namespace$__vlocitystatemodel__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__fieldapiname__c",
+        "$namespace$__objectapiname__c",
+        "$namespace$__typefieldname__c",
+        "$namespace$__typefieldvalue__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "$namespace$__statemodelid__c"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodelversion__c",
+            "field": "$namespace$__statemodelid__c"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystate__c",
+            "field": "$namespace$__statemodelid__c"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "objectname": "$namespace$__vqmachineresource__c",
+    "datafieldstomigrate": [
+        "name"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__vqmachineid__c",
+            "fieldobject": "$namespace$__vqmachine__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__vqresourceid__c",
+            "fieldobject": "$namespace$__vqresource__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__vqmachineid__r": "$namespace$__vqmachineid__c",
+        "$namespace$__vqresourceid__r": "$namespace$__vqresourceid__c"
+    },
+    "childobjectstomigrate": []
+}

@@ -1,0 +1,23 @@
+{
+    "sequence": [
+        "recordtype",
+        "$namespace$__objectclass__c",
+        "$namespace$__timeplan__c",
+        "$namespace$__timepolicy__c",
+        "pricebook2",
+        "pricebookentry",
+        "$namespace$__pricelist__c",
+        "$namespace$__attributecategory__c",
+        "$namespace$__attribute__c",
+        "product2",
+        "$namespace$__productchilditem__c",
+        "$namespace$__promotion__c",
+        "$namespace$__promotionitem__c",
+        "$namespace$__attributeassignment__c",
+        "$namespace$__overridedefinition__c",
+        "$namespace$__catalogproductrelationship__c",
+        "$namespace$__pricingvariable__c",
+        "$namespace$__pricingelement__c",
+        "$namespace$__pricelistentry__c"
+    ]
+}

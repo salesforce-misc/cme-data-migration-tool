@@ -1,0 +1,27 @@
+{
+    "objectname": "$namespace$__documentclause__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__category__c",
+        "$namespace$__clausecontent__c",
+        "$namespace$__contracttypes__c",
+        "$namespace$__isarchived__c",
+        "$namespace$__iscontentformatted__c",
+        "$namespace$__isrestricted__c",
+        "$namespace$__localecode__c",
+        "$namespace$__shortname__c",
+        "$namespace$__tokens__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": []
+}

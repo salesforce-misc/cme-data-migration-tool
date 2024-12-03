@@ -1,0 +1,74 @@
+{
+    "objectname": "$namespace$__vlocityaction__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__additionalfilter__c",
+        "$namespace$__applicablepermissionname__c",
+        "$namespace$__applicabletypes__c",
+        "$namespace$__applicableuserprofiles__c",
+        "$namespace$__customlabelname__c",
+        "$namespace$__description__c",
+        "$namespace$__displaylabel__c",
+        "$namespace$__displayon__c",
+        "$namespace$__displaysequence__c",
+        "$namespace$__executionsequence__c",
+        "$namespace$__filter__c",
+        "$namespace$__invokeclassname__c",
+        "$namespace$__invokemethodinput__c",
+        "$namespace$__invokemethodname__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isseedaction__c",
+        "$namespace$__isstatedefaultaction__c",
+        "$namespace$__keyword__c",
+        "$namespace$__linktype__c",
+        "$namespace$__openurlmode__c",
+        "$namespace$__urlparameters__c",
+        "$namespace$__url__c",
+        "$namespace$__validationclassname__c",
+        "$namespace$__validationmethodname__c",
+        "$namespace$__vlocityicon__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__stateid__c",
+            "fieldobject": "$namespace$__vlocitystate__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__statemodelid__c",
+            "fieldobject": "$namespace$__vlocitystatemodel__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__vlocitystatemodelversionid__c",
+            "fieldobject": "$namespace$__vlocitystatemodelversion__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__stateid__r": "$namespace$__stateid__c",
+        "$namespace$__statemodelid__r": "$namespace$__statemodelid__c",
+        "$namespace$__vlocitystatemodelversionid__r": "$namespace$__vlocitystatemodelversionid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetactionssetup__c",
+            "field": "$namespace$__vlocityactionid__c"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodelversion__c",
+            "field": "$namespace$__creationvlocityactionid__c"
+        }
+    ]
+}

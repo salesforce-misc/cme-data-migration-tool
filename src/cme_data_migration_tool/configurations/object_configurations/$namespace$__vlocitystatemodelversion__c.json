@@ -1,0 +1,45 @@
+{
+    "objectname": "$namespace$__vlocitystatemodelversion__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__additionalobjects__c",
+        "$namespace$__enddatetime__c",
+        "$namespace$__isenabled__c",
+        "$namespace$__priority__c",
+        "$namespace$__ruleevaluationclassname__c",
+        "$namespace$__ruleevaluationmethodname__c",
+        "$namespace$__startdatetime__c",
+        "$namespace$__versionnumber__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__currentstatus__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__statemodelid__c",
+            "fieldobject": "$namespace$__vlocitystatemodel__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__creationvlocityactionid__c",
+            "fieldobject": "$namespace$__vlocityaction__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__statemodelid__r": "$namespace$__statemodelid__c",
+        "$namespace$__creationvlocityactionid__r": "$namespace$__creationvlocityactionid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "$namespace$__vlocitystatemodelversionid__c"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "objectname": "$namespace$__calculationmatrixrow__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__enddatetime__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__hashkey__c",
+        "$namespace$__inputdata__c",
+        "$namespace$__outputdatalong__c",
+        "$namespace$__outputdata__c",
+        "$namespace$__startdatetime__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__iscalculationmatrixversionenabled__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__calculationmatrixversionid__c",
+            "fieldobject": "$namespace$__calculationmatrixversion__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__calculationmatrixversionid__r": "$namespace$__calculationmatrixversionid__c"
+    },
+    "childobjectstomigrate": []
+}

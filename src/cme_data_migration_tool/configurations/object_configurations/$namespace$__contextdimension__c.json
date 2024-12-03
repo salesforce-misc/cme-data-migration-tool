@@ -1,0 +1,47 @@
+{
+    "objectname": "$namespace$__contextdimension__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__appcontextdimension__c",
+        "$namespace$__cacheablemode__c",
+        "$namespace$__code__c",
+        "$namespace$__conditionweight__c",
+        "$namespace$__criteriafieldmap__c",
+        "$namespace$__datatype__c",
+        "$namespace$__defaultvalue__c",
+        "$namespace$__description__c",
+        "$namespace$__domaintype__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isstrong__c",
+        "$namespace$__object__c",
+        "$namespace$__picklistselectionmode__c",
+        "$namespace$__ruledimensionfield__c",
+        "$namespace$__severity__c",
+        "$namespace$__strengthpriority__c",
+        "$namespace$__values__c",
+        "$namespace$__volatility__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__vlocitypicklistid__c",
+            "fieldobject": "$namespace$__picklist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__vlocitypicklistid__r": "$namespace$__vlocitypicklistid__c"
+    },
+    "childobjectstomigrate": []
+}

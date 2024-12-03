@@ -1,0 +1,75 @@
+{
+    "objectname": "$namespace$__pricelist__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__code__c",
+        "$namespace$__currencycode__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__loyaltycode__c",
+        "$namespace$__sequence__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "$namespace$__countofactiveentries__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "$namespace$__parentpricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricebook2id__c",
+            "fieldobject": "pricebook2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid",
+        "$namespace$__parentpricelistid__r": "$namespace$__parentpricelistid__c",
+        "$namespace$__pricebook2id__r": "$namespace$__pricebook2id__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__catalog__c",
+            "field": "$namespace$__defaultpricelistid__c"
+        },
+        {
+            "childsobject": "$namespace$__contextaction__c",
+            "field": "$namespace$__pricelistid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__basepricelistid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__pricelistid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__pricelistid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "$namespace$__pricelistid__c"
+        }
+    ]
+}

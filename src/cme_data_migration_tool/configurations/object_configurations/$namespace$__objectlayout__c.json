@@ -1,0 +1,31 @@
+{
+    "objectname": "$namespace$__objectlayout__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isdefault__c",
+        "$namespace$__subclassid__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__objectclassid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__objectclassid__r": "$namespace$__objectclassid__c"
+    },
+    "childobjectstomigrate": []
+}

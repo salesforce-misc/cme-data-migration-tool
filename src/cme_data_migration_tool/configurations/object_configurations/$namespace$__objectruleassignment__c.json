@@ -1,0 +1,30 @@
+{
+    "objectname": "$namespace$__objectruleassignment__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__effectiveenddate__c",
+        "$namespace$__effectivestartdate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__object__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__headerid__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__ruleid__c",
+            "fieldobject": "$namespace$__rule__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__ruleid__r": "$namespace$__ruleid__c"
+    },
+    "childobjectstomigrate": []
+}

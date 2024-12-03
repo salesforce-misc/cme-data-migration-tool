@@ -1,0 +1,44 @@
+{
+    "objectname": "$namespace$__attributecategory__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__applicablesubtype__c",
+        "$namespace$__applicabletypesfilter__c",
+        "$namespace$__applicabletypes__c",
+        "$namespace$__code__c",
+        "$namespace$__colorcode__c",
+        "$namespace$__description__c",
+        "$namespace$__displayfilter__c",
+        "$namespace$__displaysequence__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isuserattributescreatedprivate__c",
+        "$namespace$__lockedflg__c",
+        "$namespace$__uicontroltype__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__industryvertical__c",
+        "$namespace$__isprivate__c",
+        "$namespace$__status__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__attributecategoryid__c"
+        },
+        {
+            "childsobject": "$namespace$__attribute__c",
+            "field": "$namespace$__attributecategoryid__c"
+        }
+    ]
+}

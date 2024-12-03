@@ -1,0 +1,45 @@
+{
+    "objectname": "$namespace$__pricingvariable__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__adjustmentmethod__c",
+        "$namespace$__aggregation__c",
+        "$namespace$__appliesto__c",
+        "$namespace$__chargetype__c",
+        "$namespace$__code__c",
+        "$namespace$__currencytype__c",
+        "$namespace$__description__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__recurringfrequency__c",
+        "$namespace$__scope__c",
+        "$namespace$__subtype__c",
+        "$namespace$__type__c",
+        "$namespace$__valuetype__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__appliestovariableid__c",
+            "fieldobject": "$namespace$__pricingvariable__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__appliestovariableid__r": "$namespace$__appliestovariableid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__pricingvariableid__c"
+        }
+    ]
+}

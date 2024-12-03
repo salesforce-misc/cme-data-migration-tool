@@ -1,0 +1,62 @@
+{
+    "objectname": "$namespace$__rule__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__effectivedate__c",
+        "$namespace$__enddate__c",
+        "$namespace$__expression__c",
+        "$namespace$__failuremessage__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__objectname__c",
+        "$namespace$__operation__c",
+        "$namespace$__rulepurpose__c",
+        "$namespace$__ruletype__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__fallbackid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__headerid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__fallbackid__r": "$namespace$__fallbackid__c",
+        "$namespace$__headerid__r": "$namespace$__headerid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__objectruleassignment__c",
+            "field": "$namespace$__ruleid__c"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__ruleid__c"
+        },
+        {
+            "childsobject": "$namespace$__rulefilter__c",
+            "field": "$namespace$__ruleid__c"
+        },
+        {
+            "childsobject": "$namespace$__rulevariable__c",
+            "field": "$namespace$__ruleid__c"
+        }
+    ]
+}

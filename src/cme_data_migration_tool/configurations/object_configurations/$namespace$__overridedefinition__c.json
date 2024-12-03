@@ -1,0 +1,127 @@
+{
+    "objectname": "$namespace$__overridedefinition__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__isexclude__c",
+        "$namespace$__overridetype__c",
+        "$namespace$__producthierarchyglobalkeypath__c",
+        "$namespace$__producthierarchygroupkeypath__c",
+        "$namespace$__producthierarchypath__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__overriddenattributeassignmentcategoryid__c",
+        "$namespace$__overridingattributeassignmentcategoryid__c",
+        "$namespace$__productgroupkey__c",
+        "$namespace$__promotionitemgroupkey__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__compiledattributeoverrideid__c",
+            "fieldobject": "$namespace$__compiledattributeoverride__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overriddenattributeassignmentid__c",
+            "fieldobject": "$namespace$__attributeassignment__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overriddenpricelistentryid__c",
+            "fieldobject": "$namespace$__pricelistentry__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overriddenpricingelementid__c",
+            "fieldobject": "$namespace$__pricingelement__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overriddenproductchilditemid__c",
+            "fieldobject": "$namespace$__productchilditem__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overriddenproductrelationshipid__c",
+            "fieldobject": "$namespace$__productrelationship__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overridingattributeassignmentid__c",
+            "fieldobject": "$namespace$__attributeassignment__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overridingpricelistentryid__c",
+            "fieldobject": "$namespace$__pricelistentry__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overridingpricingelementid__c",
+            "fieldobject": "$namespace$__pricingelement__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overridingproductchilditemid__c",
+            "fieldobject": "$namespace$__productchilditem__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__overridingproductrelationshipid__c",
+            "fieldobject": "$namespace$__productrelationship__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionitemid__c",
+            "fieldobject": "$namespace$__promotionitem__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__compiledattributeoverrideid__r": "$namespace$__compiledattributeoverrideid__c",
+        "$namespace$__contractid__r": "$namespace$__contractid__c",
+        "$namespace$__overriddenattributeassignmentid__r": "$namespace$__overriddenattributeassignmentid__c",
+        "$namespace$__overriddenofferpricingcomponentid__r": "$namespace$__overriddenofferpricingcomponentid__c",
+        "$namespace$__overriddenpricelistentryid__r": "$namespace$__overriddenpricelistentryid__c",
+        "$namespace$__overriddenpricingelementid__r": "$namespace$__overriddenpricingelementid__c",
+        "$namespace$__overriddenproductchilditemid__r": "$namespace$__overriddenproductchilditemid__c",
+        "$namespace$__overriddenproductrelationshipid__r": "$namespace$__overriddenproductrelationshipid__c",
+        "$namespace$__overridingattributeassignmentid__r": "$namespace$__overridingattributeassignmentid__c",
+        "$namespace$__overridingofferpricingcomponentid__r": "$namespace$__overridingofferpricingcomponentid__c",
+        "$namespace$__overridingpricelistentryid__r": "$namespace$__overridingpricelistentryid__c",
+        "$namespace$__overridingpricingelementid__r": "$namespace$__overridingpricingelementid__c",
+        "$namespace$__overridingproductchilditemid__r": "$namespace$__overridingproductchilditemid__c",
+        "$namespace$__overridingproductrelationshipid__r": "$namespace$__overridingproductrelationshipid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c",
+        "$namespace$__promotionid__r": "$namespace$__promotionid__c",
+        "$namespace$__promotionitemid__r": "$namespace$__promotionitemid__c"
+    },
+    "childobjectstomigrate": []
+}

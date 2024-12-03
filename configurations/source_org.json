@@ -1,0 +1,9 @@
+{
+  "username": "<username>",
+  "password": "<password>",
+  "consumer_key": "<consumer_key>",
+  "consumer_secret": "<consumer_secret>",
+  "domain": "test/production",
+  "instance_url" : "https://test.salesforce.com",
+  "namespace": "namespace"
+}

@@ -1,0 +1,39 @@
+{
+    "objectname": "$namespace$__offermigrationcomponentmapping__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__isactive__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__offermigrationplanid__c",
+            "fieldobject": "$namespace$__offermigrationplan__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__sourceproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__targetproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__offermigrationplanid__r": "$namespace$__offermigrationplanid__c",
+        "$namespace$__sourceproductid__r": "$namespace$__sourceproductid__c",
+        "$namespace$__targetproductid__r": "$namespace$__targetproductid__c"
+    },
+    "childobjectstomigrate": []
+}

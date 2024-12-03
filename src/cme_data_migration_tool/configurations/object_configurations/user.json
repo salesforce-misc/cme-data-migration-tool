@@ -1,0 +1,1044 @@
+{
+    "objectname": "user",
+    "datafieldstomigrate": [
+        "username",
+        "lastname",
+        "firstname",
+        "companyname",
+        "division",
+        "department",
+        "title",
+        "street",
+        "city",
+        "state",
+        "postalcode",
+        "country",
+        "latitude",
+        "longitude",
+        "geocodeaccuracy",
+        "email",
+        "emailpreferencesautobcc",
+        "emailpreferencesautobccstayintouch",
+        "emailpreferencesstayintouchreminder",
+        "senderemail",
+        "sendername",
+        "signature",
+        "stayintouchsubject",
+        "stayintouchsignature",
+        "stayintouchnote",
+        "phone",
+        "fax",
+        "mobilephone",
+        "alias",
+        "communitynickname",
+        "isactive",
+        "timezonesidkey",
+        "localesidkey",
+        "receivesinfoemails",
+        "receivesadmininfoemails",
+        "emailencodingkey",
+        "languagelocalekey",
+        "employeenumber",
+        "userpermissionsmarketinguser",
+        "userpermissionsofflineuser",
+        "userpermissionscallcenterautologin",
+        "userpermissionssfcontentuser",
+        "userpermissionsknowledgeuser",
+        "userpermissionsinteractionuser",
+        "userpermissionssupportuser",
+        "userpermissionsjigsawprospectinguser",
+        "userpermissionssiteforcecontributoruser",
+        "userpermissionssiteforcepublisheruser",
+        "userpermissionsworkdotcomuserfeature",
+        "forecastenabled",
+        "userpreferencesactivityreminderspopup",
+        "userpreferenceseventreminderscheckboxdefault",
+        "userpreferencestaskreminderscheckboxdefault",
+        "userpreferencesremindersoundoff",
+        "userpreferencesdisableallfeedsemail",
+        "userpreferencesdisablefollowersemail",
+        "userpreferencesdisableprofilepostemail",
+        "userpreferencesdisablechangecommentemail",
+        "userpreferencesdisablelatercommentemail",
+        "userpreferencesdisprofpostcommentemail",
+        "userpreferencescontentnoemail",
+        "userpreferencescontentemailasandwhen",
+        "userpreferencesapexpagesdevelopermode",
+        "userpreferencesreceivenonotificationsasapprover",
+        "userpreferencesreceivenotificationsasdelegatedapprover",
+        "userpreferenceshidecsngetchattermobiletask",
+        "userpreferencesdisablementionspostemail",
+        "userpreferencesdismentionscommentemail",
+        "userpreferenceshidecsndesktoptask",
+        "userpreferenceshidechatteronboardingsplash",
+        "userpreferenceshidesecondchatteronboardingsplash",
+        "userpreferencesdiscommentafterlikeemail",
+        "userpreferencesdisablelikeemail",
+        "userpreferencessortfeedbycomment",
+        "userpreferencesdisablemessageemail",
+        "userpreferencesjigsawlistuser",
+        "userpreferencesdisablebookmarkemail",
+        "userpreferencesdisablesharepostemail",
+        "userpreferencesactionlaunchereinsteingptconsent",
+        "userpreferencesassistiveactionsenabledinactionlauncher",
+        "userpreferencesenableautosubforfeeds",
+        "userpreferencesdisablefilesharenotificationsforapi",
+        "userpreferencesshowtitletoexternalusers",
+        "userpreferencesshowmanagertoexternalusers",
+        "userpreferencesshowemailtoexternalusers",
+        "userpreferencesshowworkphonetoexternalusers",
+        "userpreferencesshowmobilephonetoexternalusers",
+        "userpreferencesshowfaxtoexternalusers",
+        "userpreferencesshowstreetaddresstoexternalusers",
+        "userpreferencesshowcitytoexternalusers",
+        "userpreferencesshowstatetoexternalusers",
+        "userpreferencesshowpostalcodetoexternalusers",
+        "userpreferencesshowcountrytoexternalusers",
+        "userpreferencesshowprofilepictoguestusers",
+        "userpreferencesshowtitletoguestusers",
+        "userpreferencesshowcitytoguestusers",
+        "userpreferencesshowstatetoguestusers",
+        "userpreferencesshowpostalcodetoguestusers",
+        "userpreferencesshowcountrytoguestusers",
+        "userpreferencesdisablefeedbackemail",
+        "userpreferencesdisableworkemail",
+        "userpreferencesshowforecastingchangesignals",
+        "userpreferencesliveagentmiawsetupdeflection",
+        "userpreferenceshides1browserui",
+        "userpreferencesdisableendorsementemail",
+        "userpreferencespathassistantcollapsed",
+        "userpreferencescachediagnostics",
+        "userpreferencesshowemailtoguestusers",
+        "userpreferencesshowmanagertoguestusers",
+        "userpreferencesshowworkphonetoguestusers",
+        "userpreferencesshowmobilephonetoguestusers",
+        "userpreferencesshowfaxtoguestusers",
+        "userpreferencesshowstreetaddresstoguestusers",
+        "userpreferenceslightningexperiencepreferred",
+        "userpreferencespreviewlightning",
+        "userpreferenceshideenduseronboardingassistantmodal",
+        "userpreferenceshidelightningmigrationmodal",
+        "userpreferenceshidesfxwelcomemat",
+        "userpreferenceshidebiggerphotocallout",
+        "userpreferencesglobalnavbarwtshown",
+        "userpreferencesglobalnavgridmenuwtshown",
+        "userpreferencescreatelexappswtshown",
+        "userpreferencesfavoriteswtshown",
+        "userpreferencesrecordhomesectioncollapsewtshown",
+        "userpreferencesrecordhomereservedwtshown",
+        "userpreferencesfavoritesshowtopfavorites",
+        "userpreferencesexcludemailappattachments",
+        "userpreferencessuppresstasksfxreminders",
+        "userpreferencessuppresseventsfxreminders",
+        "userpreferencespreviewcustomtheme",
+        "userpreferenceshascelebrationbadge",
+        "userpreferencesuserdebugmodepref",
+        "userpreferencessrhoverrideactivities",
+        "userpreferencesnewlightningreportrunpageenabled",
+        "userpreferencesreverseopenactivitiesview",
+        "userpreferencesshowterritorytimezoneshifts",
+        "userpreferenceshassentwarningemail",
+        "userpreferenceshassentwarningemail238",
+        "userpreferenceshassentwarningemail240",
+        "userpreferencesnativeemailclient",
+        "userpreferencessendlistemailthroughexternalservice",
+        "userpreferencesbrelookuptablewelcomemat",
+        "userpreferencesshowforecastingroundedamounts",
+        "extension",
+        "federationidentifier",
+        "aboutme",
+        "digestfrequency",
+        "defaultgroupnotificationfrequency",
+        "jigsawimportlimitoverride",
+        "$namespace$__docusignemail__c",
+        "$namespace$__docusignnamedcredential__c",
+        "$namespace$__storeassociatestatus__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__omplussyncenabled__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "name",
+        "address",
+        "badgetext",
+        "usertype",
+        "lastlogindate",
+        "lastpasswordchangedate",
+        "systemmodstamp",
+        "numberoffailedlogins",
+        "offlinetrialexpirationdate",
+        "offlinepdatrialexpirationdate",
+        "fullphotourl",
+        "smallphotourl",
+        "isextindicatorvisible",
+        "outofofficemessage",
+        "mediumphotourl",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "bannerphotourl",
+        "smallbannerphotourl",
+        "mediumbannerphotourl",
+        "isprofilephotoactive"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "managerid",
+            "fieldobject": "user",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "userrole": "userroleid",
+        "profile": "profileid",
+        "delegatedapprover": "delegatedapproverid",
+        "manager": "managerid",
+        "contact": "contactid",
+        "account": "accountid",
+        "callcenter": "callcenterid",
+        "individual": "individualid"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "document",
+            "field": "authorid"
+        },
+        {
+            "childsobject": "document",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "document",
+            "field": "folderid"
+        },
+        {
+            "childsobject": "document",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "pricebook2",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "pricebook2",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "pricebookentry",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "pricebookentry",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "product2",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "product2",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "recordtype",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "recordtype",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignmentrule__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignmentrule__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignmentrule__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__attributecategory__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributecategory__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__attributecategory__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__attribute__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__attribute__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__attribute__c",
+            "field": "$namespace$__ownerid__c"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrixrow__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrixrow__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrixversion__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrixversion__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrix__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrix__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationmatrix__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedurestep__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedurestep__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedureversion__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedureversion__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedure__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedure__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedure__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__catalogproductrelationship__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalogproductrelationship__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalogrelationship__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalogrelationship__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalogrelationship__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__catalog__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalog__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__catalog__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__compiledattributeoverride__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__compiledattributeoverride__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__compiledattributeoverride__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__contextaction__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextaction__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextaction__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__contextdimension__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextdimension__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextdimension__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__contextscope__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextscope__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__contextscope__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__contracttypesetting__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__contracttypesetting__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__contracttype__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__contracttype__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__contracttype__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__drbundle__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__drbundle__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__drbundle__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__drmapitem__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__drmapitem__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__drmapitem__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__decompositionrelationship__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__decompositionrelationship__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__decompositionrelationship__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__documentclause__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__documentclause__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__documentclause__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__documenttemplate__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__documenttemplate__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__documenttemplate__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__element__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__element__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__entityfilter__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__entityfilter__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__entityfilter__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__interfaceimplementationdetail__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__interfaceimplementationdetail__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__interfaceimplementation__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__interfaceimplementation__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__interfaceimplementation__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__objectclass__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectclass__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectclass__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__objectfieldattribute__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectfieldattribute__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectlayout__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectlayout__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectlayout__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__objectruleassignment__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectruleassignment__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__objectruleassignment__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationcomponentmapping__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationcomponentmapping__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationplan__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationplan__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationplan__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__offeringprocedure__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__offeringprocedure__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__offeringprocedure__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__orchestrationscenario__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__orchestrationscenario__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__orchestrationscenario__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__picklistvalue__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__picklistvalue__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__picklist__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__picklist__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__picklist__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricelist__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricelist__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricelist__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__pricingvariable__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricingvariable__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__pricingvariable__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__productavailability__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__productavailability__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__productavailability__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__productchilditem__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__productchilditem__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__productchilditem__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__productconfigurationprocedure__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__productconfigurationprocedure__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__productconfigurationprocedure__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__producteligibility__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__producteligibility__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__producteligibility__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__rulefilter__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__rulefilter__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__rulevariable__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__rulevariable__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__rule__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__rule__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__rule__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__timeplan__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__timeplan__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__timeplan__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__timepolicy__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__timepolicy__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__timepolicy__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__uifacet__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__uifacet__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__uifacet__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__uisection__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__uisection__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__uisection__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityattachment__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityattachment__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityattachment__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitycard__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitycard__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitycard__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunctionargument__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunctionargument__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunction__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunction__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityfunction__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetactionssetup__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetactionssetup__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetsetup__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetsetup__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitysearchwidgetsetup__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodelversion__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodelversion__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodel__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodel__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystatemodel__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystate__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocitystate__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuilayout__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuilayout__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuilayout__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuitemplate__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuitemplate__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vlocityuitemplate__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vqmachineresource__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqmachineresource__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqmachine__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqmachine__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqmachine__c",
+            "field": "ownerid"
+        },
+        {
+            "childsobject": "$namespace$__vqresource__c",
+            "field": "createdbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqresource__c",
+            "field": "lastmodifiedbyid"
+        },
+        {
+            "childsobject": "$namespace$__vqresource__c",
+            "field": "ownerid"
+        }
+    ]
+}

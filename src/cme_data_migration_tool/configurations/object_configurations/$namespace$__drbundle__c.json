@@ -1,0 +1,67 @@
+{
+    "objectname": "$namespace$__drbundle__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__batchsize__c",
+        "$namespace$__checkfieldlevelsecurity__c",
+        "$namespace$__custominputclass__c",
+        "$namespace$__customoutputclass__c",
+        "$namespace$__drmapname__c",
+        "$namespace$__deleteonsuccess__c",
+        "$namespace$__description__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__ignoreerrors__c",
+        "$namespace$__inputcustom__c",
+        "$namespace$__inputjson__c",
+        "$namespace$__inputtype__c",
+        "$namespace$__inputxml__c",
+        "$namespace$__interfaceobject__c",
+        "$namespace$__isdefaultforinterface__c",
+        "$namespace$__isprocesssuperbulk__c",
+        "$namespace$__ouboundstagingobjectdatafield__c",
+        "$namespace$__outboundconfigurationfield__c",
+        "$namespace$__outboundconfigurationname__c",
+        "$namespace$__outboundstagingobjectname__c",
+        "$namespace$__outputtype__c",
+        "$namespace$__overwriteallnullvalues__c",
+        "$namespace$__preprocessorclassname__c",
+        "$namespace$__processnowthreshold__c",
+        "$namespace$__requiredpermission__c",
+        "$namespace$__rollbackonerror__c",
+        "$namespace$__salesforceplatformcachetype__c",
+        "$namespace$__sampleinputcustom__c",
+        "$namespace$__sampleinputjson__c",
+        "$namespace$__sampleinputrows__c",
+        "$namespace$__sampleinputxml__c",
+        "$namespace$__targetoutcustom__c",
+        "$namespace$__targetoutdocusigntemplateid__c",
+        "$namespace$__targetoutjson__c",
+        "$namespace$__targetoutpdfdocname__c",
+        "$namespace$__targetoutxml__c",
+        "$namespace$__timetoliveminutes__c",
+        "$namespace$__type__c",
+        "$namespace$__useassignmentrules__c",
+        "$namespace$__usetranslations__c",
+        "$namespace$__xmloutputsequence__c",
+        "$namespace$__xmlremovedeclaration__c",
+        "$namespace$__omplussyncenabled__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__calculationprocedureversion__c",
+            "field": "$namespace$__inputbundleid__c"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedureversion__c",
+            "field": "$namespace$__outputbundleid__c"
+        }
+    ]
+}

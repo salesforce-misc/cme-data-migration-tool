@@ -1,0 +1,15 @@
+{
+    "sobject_configs<Optional>": {
+            "sample_object_name < EG : product2 >": {
+            "customdatafields": [
+                "<customfield1>",
+                "<customfield2>"
+            ],
+            "customglobalkeys": [
+                "<customglobalfield1>",
+                "<customglobalfield2>"
+            ]
+        }
+    },
+    "retry_attempts_on_failure": 1
+}

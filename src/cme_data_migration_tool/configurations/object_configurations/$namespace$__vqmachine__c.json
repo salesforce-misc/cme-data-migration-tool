@@ -1,0 +1,25 @@
+{
+    "objectname": "$namespace$__vqmachine__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__acceptdecayminutes__c",
+        "$namespace$__config__c",
+        "$namespace$__rejectdecayminutes__c",
+        "$namespace$__restresourcename__c",
+        "$namespace$__viewdecayminutes__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vqmachineresource__c",
+            "field": "$namespace$__vqmachineid__c"
+        }
+    ]
+}

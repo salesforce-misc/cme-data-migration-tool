@@ -1,0 +1,31 @@
+{
+    "objectname": "$namespace$__uifacet__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__iframesource__c",
+        "$namespace$__isactive__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__iconvlocityattachmentid__c",
+            "fieldobject": "$namespace$__vlocityattachment__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__iconvlocityattachmentid__r": "$namespace$__iconvlocityattachmentid__c"
+    },
+    "childobjectstomigrate": []
+}

@@ -1,0 +1,27 @@
+{
+    "objectname": "$namespace$__contracttypesetting__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__setupvalueparameters__c",
+        "$namespace$__setupvalue__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__contracttype__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__contracttypeid__c",
+            "fieldobject": "$namespace$__contracttype__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__contracttypeid__r": "$namespace$__contracttypeid__c"
+    },
+    "childobjectstomigrate": []
+}

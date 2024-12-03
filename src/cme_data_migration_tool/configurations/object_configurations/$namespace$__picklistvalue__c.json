@@ -1,0 +1,44 @@
+{
+    "objectname": "$namespace$__picklistvalue__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__abbreviation__c",
+        "$namespace$__booleanvalue__c",
+        "$namespace$__code__c",
+        "$namespace$__datetimevalue__c",
+        "$namespace$__datevalue__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isdefault__c",
+        "$namespace$__numbervalue__c",
+        "$namespace$__sequence__c",
+        "$namespace$__textvalue__c",
+        "$namespace$__unitofmeasurename__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__value__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__picklistid__c",
+            "fieldobject": "$namespace$__picklist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__picklistid__r": "$namespace$__picklistid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__defaultpicklistvalueid__c"
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "objectname": "$namespace$__vlocitysearchwidgetactionssetup__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__actiontype__c",
+        "$namespace$__applicablecondition__c",
+        "$namespace$__displaysequence__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__actionname__c",
+        "$namespace$__displaylabel__c",
+        "$namespace$__invokeclassname__c",
+        "$namespace$__invokemethodname__c",
+        "$namespace$__urlparameters__c",
+        "$namespace$__url__c",
+        "$namespace$__vlocityicon__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__vlocitysearchwidgetsetupid__c",
+            "fieldobject": "$namespace$__vlocitysearchwidgetsetup__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__vlocityactionid__c",
+            "fieldobject": "$namespace$__vlocityaction__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__vlocitysearchwidgetsetupid__r": "$namespace$__vlocitysearchwidgetsetupid__c",
+        "$namespace$__vlocityactionid__r": "$namespace$__vlocityactionid__c"
+    },
+    "childobjectstomigrate": []
+}

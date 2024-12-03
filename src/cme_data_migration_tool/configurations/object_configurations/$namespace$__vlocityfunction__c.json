@@ -1,0 +1,28 @@
+{
+    "objectname": "$namespace$__vlocityfunction__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__code__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivefrom__c",
+        "$namespace$__effectiveuntil__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__implementationname__c",
+        "$namespace$__isactive__c",
+        "$namespace$__outputmode__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocityfunctionargument__c",
+            "field": "$namespace$__vlocityfunctionid__c"
+        }
+    ]
+}

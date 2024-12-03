@@ -1,0 +1,32 @@
+{
+    "objectname": "$namespace$__productavailability__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__city__c",
+        "$namespace$__country__c",
+        "$namespace$__enddate__c",
+        "$namespace$__frompostalcode__c",
+        "$namespace$__rulebasis__c",
+        "$namespace$__startdate__c",
+        "$namespace$__state__c",
+        "$namespace$__topostalcode__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__product2id__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__product2id__r": "$namespace$__product2id__c"
+    },
+    "childobjectstomigrate": []
+}

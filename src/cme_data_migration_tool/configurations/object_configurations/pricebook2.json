@@ -1,0 +1,40 @@
+{
+    "objectname": "pricebook2",
+    "datafieldstomigrate": [
+        "name",
+        "isactive",
+        "description",
+        "validfrom",
+        "validto",
+        "$namespace$__isdefault__c",
+        "$namespace$__isopportunitydefault__c",
+        "$namespace$__isorderdefault__c",
+        "$namespace$__isquotedefault__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "isarchived",
+        "isstandard"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "pricebookentry",
+            "field": "pricebook2id"
+        },
+        {
+            "childsobject": "$namespace$__pricelist__c",
+            "field": "$namespace$__pricebook2id__c"
+        },
+        {
+            "childsobject": "$namespace$__producteligibility__c",
+            "field": "$namespace$__pricebook2id__c"
+        }
+    ]
+}

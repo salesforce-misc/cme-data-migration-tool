@@ -1,0 +1,87 @@
+{
+    "objectname": "$namespace$__promotionitem__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__actiontype__c",
+        "$namespace$__cardinalitycheckscope__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalgroupkey__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isundoable__c",
+        "$namespace$__maxquantity__c",
+        "$namespace$__minquantity__c",
+        "$namespace$__producthierarchyglobalkeypath__c",
+        "$namespace$__producthierarchygroupkeypath__c",
+        "$namespace$__producthierarchypath__c",
+        "$namespace$__quantity__c",
+        "$namespace$__undoablemessage__c",
+        "$namespace$__updatescope__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__contextproductgroupkey__c",
+        "$namespace$__offerproductgroupkey__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__promotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__catalogcategoryid__c",
+            "fieldobject": "$namespace$__catalog__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__contextentityfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__contextproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__offerid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__promotionid__r": "$namespace$__promotionid__c",
+        "$namespace$__catalogcategoryid__r": "$namespace$__catalogcategoryid__c",
+        "$namespace$__contextentityfilterid__r": "$namespace$__contextentityfilterid__c",
+        "$namespace$__contextproductid__r": "$namespace$__contextproductid__c",
+        "$namespace$__offerid__r": "$namespace$__offerid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__promotionitemid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__promotionitemid__c"
+        }
+    ]
+}

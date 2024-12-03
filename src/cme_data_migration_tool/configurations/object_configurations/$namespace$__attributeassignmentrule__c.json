@@ -1,0 +1,30 @@
+{
+    "objectname": "$namespace$__attributeassignmentrule__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__data__c",
+        "$namespace$__isactive__c",
+        "$namespace$__sobjecttypes__c",
+        "$namespace$__service__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__attributecategoryid__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__attributeid__c",
+            "fieldobject": "$namespace$__attribute__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__attributeid__r": "$namespace$__attributeid__c"
+    },
+    "childobjectstomigrate": []
+}

@@ -1,0 +1,39 @@
+{
+    "objectname": "document",
+    "datafieldstomigrate": [
+        "name",
+        "developername",
+        "contenttype",
+        "type",
+        "ispublic",
+        "body",
+        "url",
+        "description",
+        "keywords",
+        "isinternaluseonly"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "namespaceprefix",
+        "bodylength",
+        "systemmodstamp",
+        "isbodysearchable",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "authorid",
+            "fieldobject": "user",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "folder": "folderid",
+        "author": "authorid"
+    },
+    "childobjectstomigrate": []
+}

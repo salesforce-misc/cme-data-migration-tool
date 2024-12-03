@@ -1,0 +1,35 @@
+{
+    "objectname": "$namespace$__rulevariable__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__fieldname__c",
+        "$namespace$__objectidentifier__c",
+        "$namespace$__objectpath__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__ruleid__c",
+            "fieldobject": "$namespace$__rule__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__entityfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__ruleid__r": "$namespace$__ruleid__c",
+        "$namespace$__entityfilterid__r": "$namespace$__entityfilterid__c"
+    },
+    "childobjectstomigrate": []
+}

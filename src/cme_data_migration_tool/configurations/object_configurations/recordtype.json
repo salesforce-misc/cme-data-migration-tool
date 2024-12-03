@@ -1,0 +1,22 @@
+{
+    "objectname": "recordtype",
+    "datafieldstomigrate": [
+        "name",
+        "developername",
+        "description"
+    ],
+    "readonlyfields": [
+        "id",
+        "namespaceprefix",
+        "isactive",
+        "systemmodstamp"
+    ],
+    "createablefields": [
+        "sobjecttype"
+    ],
+    "referencefields": [],
+    "referencetofieldmapping": {
+        "businessprocess": "businessprocessid"
+    },
+    "childobjectstomigrate": []
+}

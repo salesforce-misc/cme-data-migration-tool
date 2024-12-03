@@ -1,0 +1,41 @@
+{
+    "objectname": "$namespace$__productconfigurationprocedure__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__actionparameters__c",
+        "$namespace$__globalkey__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "$namespace$__productgroupkey__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__entityfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__entityfilterid__r": "$namespace$__entityfilterid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__productconfigurationprocedureid__c"
+        }
+    ]
+}

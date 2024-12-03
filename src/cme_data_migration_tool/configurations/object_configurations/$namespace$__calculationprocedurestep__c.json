@@ -1,0 +1,47 @@
+{
+    "objectname": "$namespace$__calculationprocedurestep__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__calculationformulalong__c",
+        "$namespace$__calculationformulatags__c",
+        "$namespace$__calculationformula__c",
+        "$namespace$__conditionalinputdisplaydata__c",
+        "$namespace$__conditions__c",
+        "$namespace$__function__c",
+        "$namespace$__input__c",
+        "$namespace$__isconditionalstep__c",
+        "$namespace$__isincludedinresult__c",
+        "$namespace$__outputjson__c",
+        "$namespace$__outputmappingjson__c",
+        "$namespace$__sequence__c",
+        "$namespace$__tasktype__c",
+        "$namespace$__globalkey__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__calculationprocedureid__c",
+        "$namespace$__matrixrecordtype__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__calculationprocedureversionid__c",
+            "fieldobject": "$namespace$__calculationprocedureversion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__calculationmatrixid__c",
+            "fieldobject": "$namespace$__calculationmatrix__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__calculationprocedureversionid__r": "$namespace$__calculationprocedureversionid__c",
+        "$namespace$__calculationmatrixid__r": "$namespace$__calculationmatrixid__c"
+    },
+    "childobjectstomigrate": []
+}

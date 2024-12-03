@@ -1,0 +1,82 @@
+{
+    "objectname": "$namespace$__objectclass__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalgroupkey__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isvirtual__c",
+        "$namespace$__lifecyclestatus__c",
+        "$namespace$__mode__c",
+        "$namespace$__objectapiname__c",
+        "$namespace$__recordtypename__c",
+        "$namespace$__versionlabel__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "$namespace$__parentobjectclassid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__rootobjectclassid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid",
+        "$namespace$__parentobjectclassid__r": "$namespace$__parentobjectclassid__c",
+        "$namespace$__rootobjectclassid__r": "$namespace$__rootobjectclassid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "product2",
+            "field": "$namespace$__objecttypeid__c"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__lookupobjectid__c"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__lookupobjecttypeid__c"
+        },
+        {
+            "childsobject": "$namespace$__objectfieldattribute__c",
+            "field": "$namespace$__objectclassid__c"
+        },
+        {
+            "childsobject": "$namespace$__objectlayout__c",
+            "field": "$namespace$__objectclassid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__objecttypeid__c"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "$namespace$__objecttypeid__c"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "$namespace$__relatedobjecttypeid__c"
+        }
+    ]
+}

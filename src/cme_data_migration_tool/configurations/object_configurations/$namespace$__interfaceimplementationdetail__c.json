@@ -1,0 +1,27 @@
+{
+    "objectname": "$namespace$__interfaceimplementationdetail__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__isactive__c",
+        "$namespace$__isdefault__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__interfacename__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__interfaceid__c",
+            "fieldobject": "$namespace$__interfaceimplementation__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__interfaceid__r": "$namespace$__interfaceid__c"
+    },
+    "childobjectstomigrate": []
+}

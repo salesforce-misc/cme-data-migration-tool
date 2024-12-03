@@ -1,0 +1,31 @@
+{
+    "objectname": "$namespace$__offermigrationplan__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__accountscope__c",
+        "$namespace$__businessreason__c",
+        "$namespace$__code__c",
+        "$namespace$__description__c",
+        "$namespace$__effectiveenddate__c",
+        "$namespace$__effectivestartdate__c",
+        "$namespace$__migrationmethod__c",
+        "$namespace$__productfamily__c",
+        "$namespace$__isactive__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__offermigrationcomponentmapping__c",
+            "field": "$namespace$__offermigrationplanid__c"
+        }
+    ]
+}

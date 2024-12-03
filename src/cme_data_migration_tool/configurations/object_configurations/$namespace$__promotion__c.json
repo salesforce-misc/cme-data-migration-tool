@@ -1,0 +1,109 @@
+{
+    "objectname": "$namespace$__promotion__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__appliestoallitems__c",
+        "$namespace$__cannotbecombined__c",
+        "$namespace$__code__c",
+        "$namespace$__cpqenginehints__c",
+        "$namespace$__description__c",
+        "$namespace$__discounttype__c",
+        "$namespace$__durationunitofmeasure__c",
+        "$namespace$__duration__c",
+        "$namespace$__effectiveenddate__c",
+        "$namespace$__effectivestartdate__c",
+        "$namespace$__enableautoaddproducts__c",
+        "$namespace$__enableautoapplypromotion__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__islimitedquantity__c",
+        "$namespace$__isorderable__c",
+        "$namespace$__quantity__c",
+        "$namespace$__rankorder__c",
+        "$namespace$__redeemablecode__c",
+        "$namespace$__servicecontinuation__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "$namespace$__benefittimeplanid__c",
+            "fieldobject": "$namespace$__timeplan__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__benefittimepolicyid__c",
+            "fieldobject": "$namespace$__timepolicy__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__durationtimeplanid__c",
+            "fieldobject": "$namespace$__timeplan__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__durationtimepolicyid__c",
+            "fieldobject": "$namespace$__timepolicy__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__followonpromotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid",
+        "$namespace$__benefittimeplanid__r": "$namespace$__benefittimeplanid__c",
+        "$namespace$__benefittimepolicyid__r": "$namespace$__benefittimepolicyid__c",
+        "$namespace$__durationtimeplanid__r": "$namespace$__durationtimeplanid__c",
+        "$namespace$__durationtimepolicyid__r": "$namespace$__durationtimepolicyid__c",
+        "$namespace$__followonpromotionid__r": "$namespace$__followonpromotionid__c",
+        "$namespace$__pricelistid__r": "$namespace$__pricelistid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__catalogproductrelationship__c",
+            "field": "$namespace$__promotionid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__promotionid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__promotionid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__promotionid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__promotionid__c"
+        }
+    ]
+}

@@ -1,0 +1,77 @@
+{
+    "objectname": "$namespace$__attribute__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__activeflg__c",
+        "$namespace$__code__c",
+        "$namespace$__configurable__c",
+        "$namespace$__displaysequence__c",
+        "$namespace$__excludefrombasketcache__c",
+        "$namespace$__filterable__c",
+        "$namespace$__iscloneable__c",
+        "$namespace$__isprivate__c",
+        "$namespace$__uniquenamefield__c",
+        "$namespace$__attributegrouptype__c",
+        "$namespace$__customconfiguitemplate__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__helptext__c",
+        "$namespace$__isencrypted__c",
+        "$namespace$__valuetype__c",
+        "$namespace$__value__c",
+        "$namespace$__isdefaulthidden__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isnotassetizable__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "$namespace$__attributecategoryname__c",
+        "$namespace$__autocode__c",
+        "$namespace$__attributecategorycode__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__attributecategoryid__c",
+            "fieldobject": "$namespace$__attributecategory__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__ownerid__c",
+            "fieldobject": "user",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__picklistid__c",
+            "fieldobject": "$namespace$__picklist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__attributecategoryid__r": "$namespace$__attributecategoryid__c",
+        "$namespace$__ownerid__r": "$namespace$__ownerid__c",
+        "$namespace$__picklistid__r": "$namespace$__picklistid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__attributeassignmentrule__c",
+            "field": "$namespace$__attributeid__c"
+        },
+        {
+            "childsobject": "$namespace$__attributeassignment__c",
+            "field": "$namespace$__attributeid__c"
+        },
+        {
+            "childsobject": "$namespace$__objectfieldattribute__c",
+            "field": "$namespace$__attributeid__c"
+        }
+    ]
+}

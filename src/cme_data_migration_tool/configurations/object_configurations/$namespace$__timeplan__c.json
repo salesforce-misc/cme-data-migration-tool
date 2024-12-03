@@ -1,0 +1,44 @@
+{
+    "objectname": "$namespace$__timeplan__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__effectiveenddate__c",
+        "$namespace$__effectivestartdate__c",
+        "$namespace$__frequencyunitofmeasure__c",
+        "$namespace$__frequency__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__repeat__c",
+        "$namespace$__totaldurationuom__c",
+        "$namespace$__totalduration__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__timeplanid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__timeplanid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "$namespace$__benefittimeplanid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "$namespace$__durationtimeplanid__c"
+        }
+    ]
+}

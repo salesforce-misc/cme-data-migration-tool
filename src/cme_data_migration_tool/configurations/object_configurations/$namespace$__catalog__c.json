@@ -1,0 +1,54 @@
+{
+    "objectname": "$namespace$__catalog__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__catalogcode__c",
+        "$namespace$__description__c",
+        "$namespace$__enddatetime__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__iscatalogroot__c",
+        "$namespace$__isdefault__c",
+        "$namespace$__sourcetype__c",
+        "$namespace$__startdatetime__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastactivitydate",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__defaultpricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__vendoraccount__r": "$namespace$__vendoraccount__c",
+        "$namespace$__defaultpricelistid__r": "$namespace$__defaultpricelistid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__catalogproductrelationship__c",
+            "field": "$namespace$__catalogid__c"
+        },
+        {
+            "childsobject": "$namespace$__catalogrelationship__c",
+            "field": "$namespace$__childcatalogid__c"
+        },
+        {
+            "childsobject": "$namespace$__catalogrelationship__c",
+            "field": "$namespace$__parentcatalogid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__catalogcategoryid__c"
+        }
+    ]
+}

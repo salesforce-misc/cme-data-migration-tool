@@ -1,0 +1,42 @@
+{
+    "objectname": "$namespace$__timepolicy__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__effectiveenddate__c",
+        "$namespace$__effectivestartdate__c",
+        "$namespace$__endtimepolicy__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isendproratable__c",
+        "$namespace$__isstartproratable__c",
+        "$namespace$__isstarttimedelayed__c",
+        "$namespace$__starttimedelayoffsetuom__c",
+        "$namespace$__starttimedelayoffset__c",
+        "$namespace$__starttimepolicy__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__timepolicyid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "$namespace$__benefittimepolicyid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotion__c",
+            "field": "$namespace$__durationtimepolicyid__c"
+        }
+    ]
+}

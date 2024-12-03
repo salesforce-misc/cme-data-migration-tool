@@ -1,0 +1,103 @@
+{
+    "objectname": "$namespace$__pricelistentry__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__displaytext__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isbaseprice__c",
+        "$namespace$__isoverride__c",
+        "$namespace$__isvirtualprice__c",
+        "$namespace$__pricebookentryid__c",
+        "$namespace$__pricingelementglobalkey__c",
+        "$namespace$__pricingmatrixbindingdata__c",
+        "$namespace$__rulesdescription__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__pricelistname__c",
+        "$namespace$__pricingelementamount__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__pricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__basepricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__offerid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricingelementid__c",
+            "fieldobject": "$namespace$__pricingelement__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionitemid__c",
+            "fieldobject": "$namespace$__promotionitem__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__timeplanid__c",
+            "fieldobject": "$namespace$__timeplan__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__timepolicyid__c",
+            "fieldobject": "$namespace$__timepolicy__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__pricelistid__r": "$namespace$__pricelistid__c",
+        "$namespace$__basepricelistid__r": "$namespace$__basepricelistid__c",
+        "$namespace$__offerid__r": "$namespace$__offerid__c",
+        "$namespace$__pricingelementid__r": "$namespace$__pricingelementid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c",
+        "$namespace$__promotionid__r": "$namespace$__promotionid__c",
+        "$namespace$__promotionitemid__r": "$namespace$__promotionitemid__c",
+        "$namespace$__timeplanid__r": "$namespace$__timeplanid__c",
+        "$namespace$__timepolicyid__r": "$namespace$__timepolicyid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overriddenpricelistentryid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overridingpricelistentryid__c"
+        }
+    ]
+}

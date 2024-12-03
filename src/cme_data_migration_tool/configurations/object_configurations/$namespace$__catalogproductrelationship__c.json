@@ -1,0 +1,44 @@
+{
+    "objectname": "$namespace$__catalogproductrelationship__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__effectivedate__c",
+        "$namespace$__enddate__c",
+        "$namespace$__isactive__c",
+        "$namespace$__sequencenumber__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__itemtype__c",
+        "$namespace$__productgroupkey__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__catalogid__c",
+            "fieldobject": "$namespace$__catalog__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__product2id__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__catalogid__r": "$namespace$__catalogid__c",
+        "$namespace$__product2id__r": "$namespace$__product2id__c",
+        "$namespace$__promotionid__r": "$namespace$__promotionid__c"
+    },
+    "childobjectstomigrate": []
+}

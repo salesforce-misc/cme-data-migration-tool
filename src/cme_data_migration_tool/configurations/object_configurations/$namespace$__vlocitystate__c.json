@@ -1,0 +1,34 @@
+{
+    "objectname": "$namespace$__vlocitystate__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__dtpstatemodelname__c",
+        "$namespace$__description__c",
+        "$namespace$__nodelete__c",
+        "$namespace$__noupdate__c",
+        "$namespace$__staterecordtype__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__statemodelid__c",
+            "fieldobject": "$namespace$__vlocitystatemodel__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__statemodelid__r": "$namespace$__statemodelid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vlocityaction__c",
+            "field": "$namespace$__stateid__c"
+        }
+    ]
+}

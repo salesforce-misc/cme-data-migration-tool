@@ -1,0 +1,41 @@
+{
+    "objectname": "$namespace$__compiledattributeoverride__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__attributedefaultvalues__c",
+        "$namespace$__attributemetadatachanges__c",
+        "$namespace$__attributemetadata__c",
+        "$namespace$__attributerules__c",
+        "$namespace$__jsonattribute__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__productchilditemid__c",
+            "fieldobject": "$namespace$__productchilditem__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__productchilditemid__r": "$namespace$__productchilditemid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__compiledattributeoverrideid__c"
+        }
+    ]
+}

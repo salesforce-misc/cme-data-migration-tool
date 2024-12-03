@@ -1,0 +1,40 @@
+{
+    "objectname": "$namespace$__vqresource__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__activitydata__c",
+        "$namespace$__datasourcetype__c",
+        "$namespace$__datasource__c",
+        "$namespace$__description__c",
+        "$namespace$__effectivedate__c",
+        "$namespace$__expirationdate__c",
+        "$namespace$__headline__c",
+        "$namespace$__isactive__c",
+        "$namespace$__subtitle__c",
+        "$namespace$__targetobjectkey__c",
+        "$namespace$__targetobjecttype__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__linkedproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__linkedproductid__r": "$namespace$__linkedproductid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__vqmachineresource__c",
+            "field": "$namespace$__vqresourceid__c"
+        }
+    ]
+}

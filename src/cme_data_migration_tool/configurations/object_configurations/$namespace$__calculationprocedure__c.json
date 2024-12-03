@@ -1,0 +1,40 @@
+{
+    "objectname": "$namespace$__calculationprocedure__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__actionclassname__c",
+        "$namespace$__description__c",
+        "$namespace$__subtype__c",
+        "$namespace$__type__c",
+        "$namespace$__globalkey__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__calculationprocedureversion__c",
+            "field": "$namespace$__calculationprocedureid__c"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__calculationprocedureid__c"
+        }
+    ]
+}

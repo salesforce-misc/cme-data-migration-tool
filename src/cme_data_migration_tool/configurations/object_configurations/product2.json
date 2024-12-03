@@ -1,0 +1,245 @@
+{
+    "objectname": "product2",
+    "datafieldstomigrate": [
+        "name",
+        "productcode",
+        "description",
+        "quantityscheduletype",
+        "quantityinstallmentperiod",
+        "numberofquantityinstallments",
+        "revenuescheduletype",
+        "revenueinstallmentperiod",
+        "numberofrevenueinstallments",
+        "canusequantityschedule",
+        "canuserevenueschedule",
+        "isactive",
+        "family",
+        "isserialized",
+        "externalid",
+        "displayurl",
+        "quantityunitofmeasure",
+        "stockkeepingunit",
+        "transferrecordmode",
+        "availabilitydate",
+        "discontinueddate",
+        "endoflifedate",
+        "helptext",
+        "isassetizable",
+        "configureduringsale",
+        "issoldonlywithotherprods",
+        "$namespace$__attributedefaultvalues__c",
+        "$namespace$__attributemetadata__c",
+        "$namespace$__attributerules__c",
+        "$namespace$__effectivedate__c",
+        "$namespace$__enddate__c",
+        "$namespace$__endoflifedate__c",
+        "$namespace$__fulfilmentstartdate__c",
+        "$namespace$__globalgroupkey__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__helptext__c",
+        "$namespace$__imageid__c",
+        "$namespace$__isconfigurable__c",
+        "$namespace$__isorderable__c",
+        "$namespace$__jsonattribute__c",
+        "$namespace$__lifecyclestatus__c",
+        "$namespace$__sellingenddate__c",
+        "$namespace$__sellingstartdate__c",
+        "$namespace$__specificationsubtype__c",
+        "$namespace$__specificationtype__c",
+        "$namespace$__status__c",
+        "$namespace$__type__c",
+        "$namespace$__versionenddatetime__c",
+        "$namespace$__versionlabel__c",
+        "$namespace$__versionstartdatetime__c",
+        "$namespace$__subtype__c",
+        "$namespace$__trackasagreement__c",
+        "$namespace$__attributesmarkupconfig__c",
+        "$namespace$__changedetectorimplementation__c",
+        "$namespace$__headerdata__c",
+        "$namespace$__islocationdependent__c",
+        "$namespace$__isnotassetizable__c",
+        "$namespace$__jeopardysafetyintervalunit__c",
+        "$namespace$__jeopardysafetyinterval__c",
+        "$namespace$__scope__c",
+        "$namespace$__timetolive__c",
+        "$namespace$__categorydata__c",
+        "$namespace$__iscustomersubscription__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "systemmodstamp",
+        "isdeleted",
+        "isarchived",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "specificationtype",
+        "$namespace$__objecttypename__c",
+        "$namespace$__parentclasscode__c",
+        "$namespace$__productspecname__c"
+    ],
+    "createablefields": [
+        "type"
+    ],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "sourceproductid",
+            "fieldobject": "product2",
+            "standard": true,
+            "export": false
+        },
+        {
+            "field": "$namespace$__classid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__defaultimageid__c",
+            "fieldobject": "$namespace$__vlocityattachment__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__objecttypeid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__parentclassid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productspecid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__producttemplateproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid",
+        "externaldatasource": "externaldatasourceid",
+        "basedon": "basedonid",
+        "sourceproduct": "sourceproductid",
+        "seller": "sellerid",
+        "$namespace$__classid__r": "$namespace$__classid__c",
+        "$namespace$__defaultimageid__r": "$namespace$__defaultimageid__c",
+        "$namespace$__objecttypeid__r": "$namespace$__objecttypeid__c",
+        "$namespace$__parentclassid__r": "$namespace$__parentclassid__c",
+        "$namespace$__productspecid__r": "$namespace$__productspecid__c",
+        "$namespace$__producttemplateproductid__r": "$namespace$__producttemplateproductid__c",
+        "$namespace$__vendoraccountid__r": "$namespace$__vendoraccountid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "pricebookentry",
+            "field": "product2id"
+        },
+        {
+            "childsobject": "$namespace$__catalogproductrelationship__c",
+            "field": "$namespace$__product2id__c"
+        },
+        {
+            "childsobject": "$namespace$__compiledattributeoverride__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__decompositionrelationship__c",
+            "field": "$namespace$__destinationproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__decompositionrelationship__c",
+            "field": "$namespace$__sourceproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationcomponentmapping__c",
+            "field": "$namespace$__sourceproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__offermigrationcomponentmapping__c",
+            "field": "$namespace$__targetproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__orchestrationscenario__c",
+            "field": "$namespace$__product2id__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__offerid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__offerid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__productavailability__c",
+            "field": "$namespace$__product2id__c"
+        },
+        {
+            "childsobject": "$namespace$__productchilditem__c",
+            "field": "$namespace$__childproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__productchilditem__c",
+            "field": "$namespace$__parentproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__productconfigurationprocedure__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__producteligibility__c",
+            "field": "$namespace$__product2id__c"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "$namespace$__product2id__c"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "$namespace$__relatedproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__contextproductid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__offerid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__productid__c"
+        },
+        {
+            "childsobject": "$namespace$__vqresource__c",
+            "field": "$namespace$__linkedproductid__c"
+        }
+    ]
+}

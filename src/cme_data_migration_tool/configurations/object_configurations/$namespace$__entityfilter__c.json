@@ -1,0 +1,66 @@
+{
+    "objectname": "$namespace$__entityfilter__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__attributelookupfieldname__c",
+        "$namespace$__attributesmetadatafieldname__c",
+        "$namespace$__attributesvaluesfieldname__c",
+        "$namespace$__code__c",
+        "$namespace$__description__c",
+        "$namespace$__evaluationcriteria__c",
+        "$namespace$__expression__c",
+        "$namespace$__failuremessage__c",
+        "$namespace$__filteronobjectname__c",
+        "$namespace$__formulaforconditions__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__operation__c",
+        "$namespace$__type__c",
+        "$namespace$__validfromdate__c",
+        "$namespace$__validuntildate__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__productconfigurationprocedure__c",
+            "field": "$namespace$__entityfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__productrelationship__c",
+            "field": "$namespace$__relatedproductfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__promotionitem__c",
+            "field": "$namespace$__contextentityfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__entityfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__rulefilter__c",
+            "field": "$namespace$__entityfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__rulevariable__c",
+            "field": "$namespace$__entityfilterid__c"
+        },
+        {
+            "childsobject": "$namespace$__rule__c",
+            "field": "$namespace$__fallbackid__c"
+        },
+        {
+            "childsobject": "$namespace$__rule__c",
+            "field": "$namespace$__headerid__c"
+        }
+    ]
+}

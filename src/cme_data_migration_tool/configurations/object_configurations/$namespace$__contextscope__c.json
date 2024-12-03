@@ -1,0 +1,21 @@
+{
+    "objectname": "$namespace$__contextscope__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__code__c",
+        "$namespace$__description__c",
+        "$namespace$__entitypath__c",
+        "$namespace$__entity__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__scopetype__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": []
+}

@@ -1,0 +1,29 @@
+{
+    "objectname": "$namespace$__vlocityuitemplate__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__active__c",
+        "$namespace$__author__c",
+        "$namespace$__css__c",
+        "$namespace$__customjavascript__c",
+        "$namespace$__definition__c",
+        "$namespace$__description__c",
+        "$namespace$__displayon__c",
+        "$namespace$__externalid__c",
+        "$namespace$__html__c",
+        "$namespace$__parentid__c",
+        "$namespace$__samplejson__c",
+        "$namespace$__sass__c",
+        "$namespace$__type__c",
+        "$namespace$__version__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": []
+}

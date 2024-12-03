@@ -1,0 +1,46 @@
+{
+    "objectname": "$namespace$__calculationmatrix__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__description__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__groupkey__c",
+        "$namespace$__subgroupkey__c",
+        "$namespace$__wildcardcolumn__c",
+        "$namespace$__wildcardvalue__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate",
+        "$namespace$__versionswithlongoutputcount__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "recordtypeid",
+            "fieldobject": "recordtype",
+            "standard": true,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "recordtype": "recordtypeid"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__calculationmatrixversion__c",
+            "field": "$namespace$__calculationmatrixid__c"
+        },
+        {
+            "childsobject": "$namespace$__calculationprocedurestep__c",
+            "field": "$namespace$__calculationmatrixid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricingelement__c",
+            "field": "$namespace$__pricingmatrixid__c"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "objectname": "$namespace$__decompositionrelationship__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__conditiondata__c",
+        "$namespace$__destinationdefaultquantity__c",
+        "$namespace$__destinationmaxquantity__c",
+        "$namespace$__destinationminquantity__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__mappingsdata__c",
+        "$namespace$__priority__c",
+        "$namespace$__requirereservation__c",
+        "$namespace$__sourcedefaultquantity__c",
+        "$namespace$__sourcemaxquantity__c",
+        "$namespace$__sourceminquantity__c",
+        "$namespace$__xorgroup__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__destinationproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__sourceproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__destinationproductid__r": "$namespace$__destinationproductid__c",
+        "$namespace$__sourceproductid__r": "$namespace$__sourceproductid__c"
+    },
+    "childobjectstomigrate": []
+}

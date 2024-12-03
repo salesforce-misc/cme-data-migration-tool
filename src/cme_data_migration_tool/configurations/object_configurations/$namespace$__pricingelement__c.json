@@ -1,0 +1,114 @@
+{
+    "objectname": "$namespace$__pricingelement__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__adjustmentvalue__c",
+        "$namespace$__amount__c",
+        "$namespace$__calculationtype__c",
+        "$namespace$__code__c",
+        "$namespace$__currencycode__c",
+        "$namespace$__displaytext__c",
+        "$namespace$__effectivefromdate__c",
+        "$namespace$__effectiveuntildate__c",
+        "$namespace$__globalkey2__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__helptext__c",
+        "$namespace$__isactive__c",
+        "$namespace$__isoverride__c",
+        "$namespace$__isreusable__c",
+        "$namespace$__loyaltyamount__c",
+        "$namespace$__loyaltycode__c",
+        "$namespace$__perusageamount__c",
+        "$namespace$__perusageunitofmeasure__c",
+        "$namespace$__pricingmatrixbindingdata__c",
+        "$namespace$__ruleinfo__c",
+        "$namespace$__versionnumber__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__pricingvariableappliesto__c",
+        "$namespace$__pricingvariabletype__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__objecttypeid__c",
+            "fieldobject": "$namespace$__objectclass__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__offerid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricingmatrixid__c",
+            "fieldobject": "$namespace$__calculationmatrix__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricingvariableid__c",
+            "fieldobject": "$namespace$__pricingvariable__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__productid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__promotionid__c",
+            "fieldobject": "$namespace$__promotion__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__timeplanid__c",
+            "fieldobject": "$namespace$__timeplan__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__objecttypeid__r": "$namespace$__objecttypeid__c",
+        "$namespace$__offerid__r": "$namespace$__offerid__c",
+        "$namespace$__perusagemeasurementid__r": "$namespace$__perusagemeasurementid__c",
+        "$namespace$__pricelistid__r": "$namespace$__pricelistid__c",
+        "$namespace$__pricingmatrixid__r": "$namespace$__pricingmatrixid__c",
+        "$namespace$__pricingvariableid__r": "$namespace$__pricingvariableid__c",
+        "$namespace$__productid__r": "$namespace$__productid__c",
+        "$namespace$__promotionid__r": "$namespace$__promotionid__c",
+        "$namespace$__timeplanid__r": "$namespace$__timeplanid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__contextaction__c",
+            "field": "$namespace$__pricingelementid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overriddenpricingelementid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overridingpricingelementid__c"
+        },
+        {
+            "childsobject": "$namespace$__pricelistentry__c",
+            "field": "$namespace$__pricingelementid__c"
+        }
+    ]
+}

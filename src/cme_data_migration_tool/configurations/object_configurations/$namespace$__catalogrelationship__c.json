@@ -1,0 +1,32 @@
+{
+    "objectname": "$namespace$__catalogrelationship__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__sequencenumber__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__childcatalogid__c",
+            "fieldobject": "$namespace$__catalog__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__parentcatalogid__c",
+            "fieldobject": "$namespace$__catalog__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__childcatalogid__r": "$namespace$__childcatalogid__c",
+        "$namespace$__parentcatalogid__r": "$namespace$__parentcatalogid__c"
+    },
+    "childobjectstomigrate": []
+}

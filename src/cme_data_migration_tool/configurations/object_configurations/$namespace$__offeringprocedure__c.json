@@ -1,0 +1,23 @@
+{
+    "objectname": "$namespace$__offeringprocedure__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "lastvieweddate",
+        "lastreferenceddate"
+    ],
+    "createablefields": [],
+    "referencefields": [],
+    "referencetofieldmapping": {},
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__ruleaction__c",
+            "field": "$namespace$__offeringprocedureid__c"
+        }
+    ]
+}

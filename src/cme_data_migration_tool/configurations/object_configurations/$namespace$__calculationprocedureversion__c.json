@@ -1,0 +1,60 @@
+{
+    "objectname": "$namespace$__calculationprocedureversion__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__applicableobject__c",
+        "$namespace$__constants__c",
+        "$namespace$__enablelooping__c",
+        "$namespace$__enddatetime__c",
+        "$namespace$__isenabled__c",
+        "$namespace$__lastsimulationinput__c",
+        "$namespace$__loopingspecification__c",
+        "$namespace$__postprocessorclass__c",
+        "$namespace$__preprocessorclass__c",
+        "$namespace$__priority__c",
+        "$namespace$__startdatetime__c",
+        "$namespace$__variables__c",
+        "$namespace$__versionnumber__c",
+        "$namespace$__globalkey__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__currentstatus__c",
+        "$namespace$__inputdataraptorbundlename__c",
+        "$namespace$__outputdataraptorbundlename__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__calculationprocedureid__c",
+            "fieldobject": "$namespace$__calculationprocedure__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__inputbundleid__c",
+            "fieldobject": "$namespace$__drbundle__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__outputbundleid__c",
+            "fieldobject": "$namespace$__drbundle__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__calculationprocedureid__r": "$namespace$__calculationprocedureid__c",
+        "$namespace$__inputbundleid__r": "$namespace$__inputbundleid__c",
+        "$namespace$__outputbundleid__r": "$namespace$__outputbundleid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__calculationprocedurestep__c",
+            "field": "$namespace$__calculationprocedureversionid__c"
+        }
+    ]
+}

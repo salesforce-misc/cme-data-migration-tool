@@ -1,0 +1,41 @@
+{
+    "objectname": "$namespace$__rulefilter__c",
+    "datafieldstomigrate": [
+        "$namespace$__actiontaken__c",
+        "$namespace$__index__c",
+        "$namespace$__sequence__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "name",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__ruleid__c",
+            "fieldobject": "$namespace$__rule__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__contextactionid__c",
+            "fieldobject": "$namespace$__contextaction__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__entityfilterid__c",
+            "fieldobject": "$namespace$__entityfilter__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__ruleid__r": "$namespace$__ruleid__c",
+        "$namespace$__contextactionid__r": "$namespace$__contextactionid__c",
+        "$namespace$__entityfilterid__r": "$namespace$__entityfilterid__c"
+    },
+    "childobjectstomigrate": []
+}

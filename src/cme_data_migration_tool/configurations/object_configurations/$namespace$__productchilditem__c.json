@@ -1,0 +1,62 @@
+{
+    "objectname": "$namespace$__productchilditem__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__allowindependentlifecycle__c",
+        "$namespace$__childlinenumber__c",
+        "$namespace$__collapsehierarchy__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isoverride__c",
+        "$namespace$__isrootproductchilditem__c",
+        "$namespace$__isvirtualitem__c",
+        "$namespace$__maxquantity__c",
+        "$namespace$__maximumchilditemquantity__c",
+        "$namespace$__minquantity__c",
+        "$namespace$__minimumchilditemquantity__c",
+        "$namespace$__quantity__c",
+        "$namespace$__relationshiptype__c",
+        "$namespace$__selectionmethodimplementation__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp",
+        "$namespace$__childproductname__c",
+        "$namespace$__minmaxdefaultqty__c",
+        "$namespace$__parentproductname__c",
+        "$namespace$__seqnumber__c"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__childproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__parentproductid__c",
+            "fieldobject": "product2",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__childproductid__r": "$namespace$__childproductid__c",
+        "$namespace$__parentproductid__r": "$namespace$__parentproductid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__compiledattributeoverride__c",
+            "field": "$namespace$__productchilditemid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overriddenproductchilditemid__c"
+        },
+        {
+            "childsobject": "$namespace$__overridedefinition__c",
+            "field": "$namespace$__overridingproductchilditemid__c"
+        }
+    ]
+}

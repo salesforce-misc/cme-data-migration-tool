@@ -1,0 +1,43 @@
+{
+    "objectname": "$namespace$__contextaction__c",
+    "datafieldstomigrate": [
+        "name",
+        "$namespace$__code__c",
+        "$namespace$__customimplementation__c",
+        "$namespace$__effectivefrom__c",
+        "$namespace$__effectiveuntil__c",
+        "$namespace$__globalkey__c",
+        "$namespace$__isactive__c",
+        "$namespace$__type__c"
+    ],
+    "readonlyfields": [
+        "id",
+        "isdeleted",
+        "systemmodstamp"
+    ],
+    "createablefields": [],
+    "referencefields": [
+        {
+            "field": "$namespace$__pricelistid__c",
+            "fieldobject": "$namespace$__pricelist__c",
+            "standard": false,
+            "export": false
+        },
+        {
+            "field": "$namespace$__pricingelementid__c",
+            "fieldobject": "$namespace$__pricingelement__c",
+            "standard": false,
+            "export": false
+        }
+    ],
+    "referencetofieldmapping": {
+        "$namespace$__pricelistid__r": "$namespace$__pricelistid__c",
+        "$namespace$__pricingelementid__r": "$namespace$__pricingelementid__c"
+    },
+    "childobjectstomigrate": [
+        {
+            "childsobject": "$namespace$__rulefilter__c",
+            "field": "$namespace$__contextactionid__c"
+        }
+    ]
+}
