@@ -12,22 +12,23 @@ CME Data Migration tool is designed to efficiently transfer data from one Salesf
 CME Data Migration tool is a python based tool which requires [python 3][python3 documentation]
 
 ## Installation
-* Install Python 3 for your environment from https://www.python.org/ for your machine
-        * Create and activate a virtual environment:
-            * Windows:
+- Install Python 3 for your environment from https://www.python.org/ for your machine
+        - Create and activate a virtual environment:
+            - Windows:
                 ```bash
                 python -m venv .env
                 .env\Scripts\activate
                 ```
-            * macOS/Linux:
+            - macOS/Linux:
                 ```bash
                 python3 -m venv .env
                 source .env/bin/activate
                 ```
 
-        * Install dependencies:
+        -Install dependencies:
             ```bash
             pip install -r requirements.txt
+            ```
 
 ## Script Structure
 
