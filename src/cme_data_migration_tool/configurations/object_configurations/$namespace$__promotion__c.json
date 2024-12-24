@@ -86,6 +86,36 @@
     },
     "childobjectstomigrate": [
         {
+            "sequence": 1,
+            "type": "more",
+            "childsobject" : "$namespace$__pricelistentry__c",
+            "whereClause": "$namespace$__promotionid__c",
+            "collectedFields": {
+                "$namespace$__pricebookentry__c": "$namespace$__pricebookentryid__c",
+                "$namespace$__pricingelement__c": "$namespace$__pricingelementid__c",
+                "$namespace$__pricelist__c": "$namespace$__pricelistid__c",
+                "$namespace$__pricingvariable__c": "$namespace$__pricingelementid__r.$namespace$__pricingvariableid__c"
+            } 
+        },
+        {
+            "sequence": 2,
+            "type": "more",
+            "childsobject": "$namespace$__ruleassignment__c",
+            "whereClause": "$namespace$__objectid__c",
+            "collectedFields": {
+                "$namespace$__rule__c": "$namespace$__ruleid__c"
+            } 
+        },
+        {
+            "sequence": 3,
+            "type": "more",
+            "childsobject": "$namespace$__promotionitem__c",
+            "whereClause": "$namespace$__promotionid__c",
+            "collectedFields": {
+                "product2": "$namespace$__productid__c"
+            } 
+        },
+        {
             "childsobject": "$namespace$__catalogproductrelationship__c",
             "field": "$namespace$__promotionid__c"
         },
