@@ -146,6 +146,48 @@
     },
     "childobjectstomigrate": [
         {
+            "sequence": 1,
+            "type": "recursive",
+            "childsobject": "$namespace$__productchilditem__c",
+            "whereClause":  "$namespace$__parentproductid__c",
+            "recursiveField": "$namespace$__childproductid__c",
+            "collectedFields": {
+                "$namespace$__objectid__c": "$namespace$__ParentProductId__r.$namespace$__ObjectTypeId__c"
+            }
+        },
+        {
+            "sequence": 2,
+            "type": "polymorphic",
+            "childsobject": "$namespace$__attributeassignment__c",
+            "whereClause": "$namespace$__objectid__c",
+            "polymorphicField": "product2",
+            "collectedFields": {
+                "$namespace$__attributecategory__c": "$namespace$__attributecategoryid__c",
+                "$namespace$__attribute__c": "$namespace$__attributeid__c"
+            }
+        },
+        {
+            "sequence": 3,
+            "type": "more",
+            "childsobject": "$namespace$__pricelistentry__c",
+            "whereClause": "$namespace$__productid__c",
+            "collectedFields": {
+                "$namespace$__pricebookentry__c": "$namespace$__pricebookentryid__c",
+                "$namespace$__pricingelement__c": "$namespace$__pricingelementid__c",
+                "$namespace$__pricelist__c": "$namespace$__pricelistid__c",
+                "$namespace$__pricingvariable__c": "$namespace$__pricingelementid__r.$namespace$__pricingvariableid__c"
+            }
+        },
+        {
+            "sequence": 4,
+            "type": "more",
+            "childsobject": "$namespace$__overridedefinition__c",
+            "whereClause": "$namespace$__productid__c",
+            "collectedFields": {
+                "$namespace$__compiledattributeoverrideid__c": "$namespace$__pricebookentryid__c"
+            }
+        },
+        {
             "childsobject": "pricebookentry",
             "field": "product2id"
         },
