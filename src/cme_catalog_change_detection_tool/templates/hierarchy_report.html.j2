@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title | e }}</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="hierarchy.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <h4 class="page-title">{{ title | e }}<span class="new badge blue summary-chip" data-badge-caption="">{{ rows_count }}</span></h4>
+        <p class="grey-text">{{ subtitle | e }}</p>
+      </div>
+      <div class="section">
+        <div class="card">
+          <div class="card-content">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+              <span class="card-title" style="margin:0">Hierarchy</span>
+              <div class="switch" title="Show only rows changed in the last N days (and their full hierarchy)">
+                <label>
+                  All
+                  <input id="filter-highlighted" type="checkbox">
+                  <span class="lever"></span>
+                  Highlighted only
+                </label>
+              </div>
+            </div>
+            <div style="max-height: 70vh; overflow: auto;"> 
+              <table class="striped highlight">
+                <thead class="sticky-header">
+                  <tr>
+                    <th>Entity</th>
+                    <th>CreatedDate</th>
+                    <th>LastModifiedDate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ rows_html | safe }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="hierarchy.js"></script>
+  </body>
+</html>

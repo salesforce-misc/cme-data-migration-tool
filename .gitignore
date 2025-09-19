@@ -65,3 +65,4 @@ configurations/destination_org.json
 configurations/source_org.json
 results/*
 import_results/*
+ouptut/
