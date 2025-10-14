@@ -1,0 +1,224 @@
+## -----------------------------------------------------------------------------
+## EPC Queries - YAML Definition
+## -----------------------------------------------------------------------------
+## Structure
+## queries:
+##   <Entity Name>:
+##     base: "SELECT ... FROM <SObject>"                                    # Base SOQL query
+##     where: "<SOQL WHERE clause using ${dependency_set}>"                 # Use this when you have a single dependency
+##     where_any_of:                                                        # Use this when you have conditions from multiple dependencies
+##       - if_set: <dependency_set>                                         # If this dependency set is present, use the where clause
+##         where: "<SOQL WHERE clause using ${dependency_set}>"
+##     fields_to_collect:                                                   # Collect these field values and store it in dependency set
+##       - <output_dependency_set>:<fieldName in SOQL>
+##     output_set: <dependency_set>                                         # Collect Id fields and store with this dependency set name
+##     
+queries:
+  Product2:
+    base: "SELECT Id, Name, vlocity_cmt__ProductSpecId__c, vlocity_cmt__ProductSpecId__r.Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectTypeId__c FROM Product2"
+    where: "Id IN (${product_ids})"
+    output_set: product_ids
+    fields_to_collect:
+      - object_class_ids:vlocity_cmt__ObjectTypeId__c
+      - product_ids:vlocity_cmt__ProductSpecId__c
+
+  ProductChildItem:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ParentProductId__c, vlocity_cmt__ParentProductId__r.Name, vlocity_cmt__ChildProductId__c, vlocity_cmt__ChildProductId__r.Name FROM vlocity_cmt__ProductChildItem__c"
+    where: "vlocity_cmt__ParentProductId__c IN (${product_ids})"
+    fields_to_collect:
+      - product_ids:vlocity_cmt__ChildProductId__c
+
+  ObjectClass:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__ObjectClass__c"
+    where: "Id IN (${object_class_ids})"
+    output_set: object_class_ids
+
+  ObjectFieldAttribute:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__AttributeCategoryId__c, vlocity_cmt__AttributeId__c, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__ObjectFieldAttribute__c"
+    where: "vlocity_cmt__ObjectClassId__c IN (${object_class_ids})"
+    fields_to_collect:
+      - attribute_category_ids:vlocity_cmt__AttributeCategoryId__c
+      - attribute_ids:vlocity_cmt__AttributeId__c
+
+  AttributeBinding:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__AttributeCategoryId__c, vlocity_cmt__AttributeId__c, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__AttributeBinding__c"
+    where: "vlocity_cmt__ObjectClassId__c IN (${object_class_ids})"
+    fields_to_collect:
+      - attribute_category_ids:vlocity_cmt__AttributeCategoryId__c
+      - attribute_ids:vlocity_cmt__AttributeId__c
+
+  AttributeAssignment:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__AttributeCategoryId__c, vlocity_cmt__AttributeId__c, vlocity_cmt__PicklistId__c, vlocity_cmt__ObjectId__c FROM vlocity_cmt__AttributeAssignment__c"
+    where: "vlocity_cmt__ObjectId__c IN (${product_ids})"
+    fields_to_collect:
+      - attribute_category_ids:vlocity_cmt__AttributeCategoryId__c
+      - attribute_ids:vlocity_cmt__AttributeId__c
+      - picklist_ids:vlocity_cmt__PicklistId__c
+
+  OverrideDefinition:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ProductId__c FROM vlocity_cmt__OverrideDefinition__c"
+    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
+
+  AttributeCategory:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__AttributeCategory__c"
+    where: "Id IN (${attribute_category_ids})"
+    output_set: attribute_category_ids
+
+  Attribute:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PicklistId__c FROM vlocity_cmt__Attribute__c"
+    where: "Id IN (${attribute_ids})"
+    output_set: attribute_ids
+    fields_to_collect:
+      - picklist_ids:vlocity_cmt__PicklistId__c
+
+  ProductRelationship:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__Product2Id__c, vlocity_cmt__RelatedProductId__c FROM vlocity_cmt__ProductRelationship__c"
+    where: "(vlocity_cmt__Product2Id__c IN (${product_ids}) OR vlocity_cmt__RelatedProductId__c IN (${product_ids}))"
+    output_set: product_relationship_ids
+
+  ProductConfigurationProcedure:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__EntityFilterId__c, vlocity_cmt__ProductId__c FROM vlocity_cmt__ProductConfigurationProcedure__c"
+    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
+    fields_to_collect:
+      - entity_filter_ids:vlocity_cmt__EntityFilterId__c
+    output_set: product_configuration_procedure_ids
+
+  RuleAction:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__RuleId__c, vlocity_cmt__EntityFilterId__c, vlocity_cmt__ProductRelationshipId__c, vlocity_cmt__ProductConfigurationProcedureId__c FROM vlocity_cmt__RuleAction__c"
+    where_any_of:
+      - if_set: product_relationship_ids
+        where: "vlocity_cmt__ProductRelationshipId__c IN (${product_relationship_ids})"
+      - if_set: product_configuration_procedure_ids
+        where: "vlocity_cmt__ProductConfigurationProcedureId__c IN (${product_configuration_procedure_ids})"
+    fields_to_collect:
+      - rule_ids:vlocity_cmt__RuleId__c
+      - entity_filter_ids:vlocity_cmt__EntityFilterId__c
+
+  Rule:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__Rule__c"
+    where: "Id IN (${rule_ids})"
+    output_set: rule_ids
+
+  RuleVariable:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__RuleId__c FROM vlocity_cmt__RuleVariable__c"
+    where: "vlocity_cmt__RuleId__c IN (${rule_ids})"
+
+  RuleFilter:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__EntityFilterId__c, vlocity_cmt__RuleId__c FROM vlocity_cmt__RuleFilter__c"
+    where: "vlocity_cmt__RuleId__c IN (${rule_ids})"
+    fields_to_collect:
+      - entity_filter_ids:vlocity_cmt__EntityFilterId__c
+
+  EntityFilter:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__EntityFilter__c"
+    where: "Id IN (${entity_filter_ids})"
+    output_set: entity_filter_ids
+
+  EntityFilterCondition:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__EntityFilterId__c FROM vlocity_cmt__EntityFilterCondition__c"
+    where: "vlocity_cmt__EntityFilterId__c IN (${entity_filter_ids})"
+    fields_to_collect:
+      - entity_filter_condition_ids:Id
+
+  EntityFilterMember:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__EntityFilterId__c FROM vlocity_cmt__EntityFilterMember__c"
+    where: "vlocity_cmt__EntityFilterId__c IN (${entity_filter_ids})"
+
+  EntityFilterConditionArgument:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__FilterConditionId__c FROM vlocity_cmt__EntityFilterConditionArgument__c"
+    where: "vlocity_cmt__FilterConditionId__c IN (${entity_filter_condition_ids})"
+
+  ObjectLayout:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__ObjectLayout__c"
+    where: "vlocity_cmt__ObjectClassId__c IN (${object_class_ids})"
+    fields_to_collect:
+      - object_layout_ids:Id
+
+  ObjectFacet:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__FacetId__c, vlocity_cmt__ObjectLayoutId__c FROM vlocity_cmt__ObjectFacet__c"
+    where: "vlocity_cmt__ObjectLayoutId__c IN (${object_layout_ids})"
+    fields_to_collect:
+      - ui_facet_ids:vlocity_cmt__FacetId__c
+      - object_facet_ids:Id
+
+  ObjectSection:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__SectionId__c, vlocity_cmt__ObjectFacetId__c FROM vlocity_cmt__ObjectSection__c"
+    where: "vlocity_cmt__ObjectFacetId__c IN (${object_facet_ids})"
+    fields_to_collect:
+      - ui_section_ids:vlocity_cmt__SectionId__c
+      - object_section_ids:Id
+
+  ObjectElement:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectSectionId__c FROM vlocity_cmt__ObjectElement__c"
+    where: "vlocity_cmt__ObjectSectionId__c IN (${object_section_ids})"
+
+  UIFacet:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UIFacet__c"
+    where: "Id IN (${ui_facet_ids})"
+
+  UISection:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UISection__c"
+    where: "Id IN (${ui_section_ids})"
+
+  PriceListEntry:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PriceListId__c, vlocity_cmt__PricingElementId__c, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c, vlocity_cmt__ProductId__c FROM vlocity_cmt__PriceListEntry__c"
+    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
+    fields_to_collect:
+      - pricing_element_ids:vlocity_cmt__PricingElementId__c
+      - pricing_variable_ids:vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c
+
+  PricingElement:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingElement__c"
+    where: "Id IN (${pricing_element_ids})"
+    fields_to_collect:
+      - pricing_variable_ids:vlocity_cmt__PricingVariableId__c
+
+  PricingVariable:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__PricingVariable__c"
+    where: "Id IN (${pricing_variable_ids})"
+    output_set: pricing_variable_ids
+
+  PricingVariableBinding:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingVariableBinding__c"
+    where: "vlocity_cmt__PricingVariableId__c IN (${pricing_variable_ids})"
+
+  Picklist:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__Picklist__c"
+    where: "Id IN (${picklist_ids})"
+
+  PicklistValue:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PicklistId__c FROM vlocity_cmt__PicklistValue__c"
+    where: "vlocity_cmt__PicklistId__c IN (${picklist_ids})"
+
+  # Calculation Matrix and related
+  CalculationMatrix:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__CalculationMatrix__c"
+    output_set: calculation_matrix_ids
+
+  CalculationMatrixVersion:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__CalculationMatrixId__c FROM vlocity_cmt__CalculationMatrixVersion__c"
+    where: "vlocity_cmt__CalculationMatrixId__c IN (${calculation_matrix_ids})"
+    output_set: calculation_matrix_version_ids
+
+  CalculationMatrixRow:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__CalculationMatrixVersionId__c FROM vlocity_cmt__CalculationMatrixRow__c"
+    where: "vlocity_cmt__CalculationMatrixVersionId__c IN (${calculation_matrix_version_ids})"
+
+  # Calculation Procedure and related
+  CalculationProcedure:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__CalculationProcedure__c"
+    output_set: calculation_procedure_ids
+
+  CalculationProcedureVersion:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__CalculationProcedureId__c FROM vlocity_cmt__CalculationProcedureVersion__c"
+    where: "vlocity_cmt__CalculationProcedureId__c IN (${calculation_procedure_ids})"
+    output_set: calculation_procedure_version_ids
+
+  CalculationProcedureStep:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__CalculationProcedureVersionId__c FROM vlocity_cmt__CalculationProcedureStep__c"
+    where: "vlocity_cmt__CalculationProcedureVersionId__c IN (${calculation_procedure_version_ids})"
+
+  # CPQ Configuration Setup
+  CpqConfigurationSetup:
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__CpqConfigurationSetup__c"
+

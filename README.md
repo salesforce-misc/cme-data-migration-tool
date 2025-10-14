@@ -139,3 +139,47 @@ Apache License Version 2.0
    [about-time]: <https://github.com/rsalmei/about-time>
    [alive-progress]: <https://github.com/rsalmei/alive-progress>
    [prettytable]: <>
+
+
+#
+# CME Catalog Change Detection Tool
+
+Detects Industries EPC changes for the last N days and generates a report
+
+### Install
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Input JSON
+
+`configurations/input.sample.json`:
+
+```json
+{
+  "username": "user@example.com",
+  "password": "<password or password+token>",
+  "instance_url": "https://yourinstance.my.salesforce.com",
+  "domain": "login",
+  "number_of_days": 7,
+  "product_id": "01txxxxxxxxx"
+}
+```
+
+Notes:
+- Provide `instance_url` for your org
+- `domain` must be either `login` (production) or `test` (sandbox). Other values are not supported.
+
+### Run
+
+```bash
+./ccd.py -f configurations/ccd-input.json 
+```
+
+Outputs JSON files per entity in `output/<timestamp>/`.
+
+### Report
+
+The tool generates a hierarchical HTML report at `output/<timestamp>/epc_changes.html`, organized under the selected `Product2` root.

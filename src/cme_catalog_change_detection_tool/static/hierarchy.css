@@ -1,0 +1,12 @@
+body { background: #fafafa; }
+.page-title { margin-top: 24px; }
+.sticky-header th { position: sticky; top: 0; background: #f5f5f5; z-index: 2; }
+.highlight-cell { background: #fff59d; }
+.id-link a { word-break: break-all; }
+table.striped > tbody > tr:nth-child(odd) { background-color: #f9f9f9; }
+.badge { border-radius: 8px; }
+.name { color: #263238; }
+td:first-child div { line-height: 1.2; }
+.toggle-icon { cursor: pointer; user-select: none; }
+.leaf-icon { color: #90a4ae; user-select: none; }
+

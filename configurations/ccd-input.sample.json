@@ -1,0 +1,8 @@
+{
+  "username": "user@example.com",
+  "password": "<password or password+token>",
+  "instance_url": "https://yourinstance.my.salesforce.com",
+  "domain": "login",
+  "number_of_days": 7,
+  "product_id": "01txxxxxxxxx"
+}
