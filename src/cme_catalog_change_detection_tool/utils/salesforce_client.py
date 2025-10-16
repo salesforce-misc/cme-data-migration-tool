@@ -32,7 +32,10 @@ class SalesforceClient:
         res = self._sf.query(soql)
         results.extend(res.get("records", []))
         while not res.get("done", True):
-            res = self._sf.query_more(res.get("nextRecordsUrl"))
+            next_url = res.get("nextRecordsUrl")
+            if not next_url:
+                break
+            res = self._sf.query_more(next_url, identifier_is_url=True)
             results.extend(res.get("records", []))
         return results
 
