@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Set
 from simple_salesforce import Salesforce, SalesforceMalformedRequest, SalesforceLogin, SalesforceAuthenticationFailed
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -20,6 +20,7 @@ class SalesforceClient:
                 domain=domain,
             )
             self._sf = Salesforce(instance=instance, session_id=session_id)
+            self._sobject_names: Optional[Set[str]] = None
         except SalesforceAuthenticationFailed as e:
             raise e
 
@@ -38,5 +39,20 @@ class SalesforceClient:
             res = self._sf.query_more(next_url, identifier_is_url=True)
             results.extend(res.get("records", []))
         return results
+
+    def list_sobject_names(self) -> Set[str]:
+        '''
+        Return SObject API names in the org
+        '''
+        if self._sobject_names is not None:
+            return self._sobject_names
+        desc = self._sf.describe()
+        names: Set[str] = set()
+        for sobj in desc.get("sobjects", []) or []:
+            name = sobj.get("name")
+            if name:
+                names.add(name)
+        self._sobject_names = names
+        return names
 
 

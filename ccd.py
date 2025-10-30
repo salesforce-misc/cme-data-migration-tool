@@ -28,13 +28,13 @@ from rich import print
 from rich.console import Console
 from rich.table import Table
 from datetime import datetime, timezone, timedelta
-from dateutil import parser as date_parser
 from src.cme_catalog_change_detection_tool.utils.config import AppConfig
 from src.cme_catalog_change_detection_tool.utils.salesforce_client import SalesforceClient
 from src.cme_catalog_change_detection_tool.engine.soql_engine import SoqlEngine
 from src.cme_catalog_change_detection_tool.engine.pci_resolver import PCIResolver
 from src.cme_catalog_change_detection_tool.utils.hierarchy_builder import build_product_hierarchy
 from src.cme_catalog_change_detection_tool.utils.report_generator import generate_hierarchical_html_report
+from src.cme_catalog_change_detection_tool.engine.history_retriever import collect_history_for_recent_changes
 
 
 # Execute queries in order
@@ -107,6 +107,7 @@ def main() -> None:
         engine.catalog_map.setdefault("product_ids", set()).add(product_id)
 
     # Execute queries in order
+    print("\nFetching Product bundle & its related entity records")
     total = len(execution_order)
     entity_counts: List[tuple[str, int]] = []
     for idx, entity_name in enumerate(execution_order, start=1):
@@ -134,22 +135,34 @@ def main() -> None:
     report_path = str(Path(out_dir) / "epc_changes.html")
 
 
-    # Build HTML report
+    # Prepare cutoff and fetch history in one call
     n = cfg.number_of_days
+    cutoff_iso = (datetime.now(timezone.utc) - timedelta(days=n)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    history_by_parent = collect_history_for_recent_changes(
+        sf_client=sf_client,
+        engine=engine,
+        execution_order=execution_order,
+        cutoff_iso=cutoff_iso,
+    )
+
+    # Build HTML report
     title = f"EPC Changes in last {n} days"
     subtitle = f"Generated at {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%SZ')} (UTC)"
-    now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=n)
+
+    # Write HTML report
     generate_hierarchical_html_report(
         products=products_tree,
         output_path=report_path,
         title=title,
         subtitle=subtitle,
         instance_url=cfg.instance_url,
-        cutoff_iso=cutoff.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        cutoff_iso=cutoff_iso,
         engine_results=engine.results,
+        history_by_parent_id=history_by_parent,
     )
     print(f"HTML report written to {report_path}")
+
+    # Open HTML report in browser
     try:
         webbrowser.open(f"file://{Path(report_path).absolute()}")
     except Exception:

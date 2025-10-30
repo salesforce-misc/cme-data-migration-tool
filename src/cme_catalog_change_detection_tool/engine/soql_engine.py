@@ -13,6 +13,7 @@ from src.cme_catalog_change_detection_tool.utils.config import AppConfig
 @dataclass
 class QueryDefinition:
     name: str
+    api_name: str
     base: str
     where: Optional[str] = None
     where_any_of: List[Dict[str, str]] = field(default_factory=list)
@@ -46,6 +47,7 @@ class SoqlEngine:
             nodes[name] = QueryDefinition(
                 name=name,
                 base=spec["base"],
+                api_name=spec["api_name"] if "api_name" in spec else None,
                 where=spec.get("where"),
                 where_any_of=spec.get("where_any_of", spec.get("any_of_sets", [])),
                 fields_to_collect=spec.get("fields_to_collect", []),
@@ -65,6 +67,19 @@ class SoqlEngine:
         for soql in soqls:
             rows = self.sf_client.query(soql)
             all_rows.extend(rows)
+
+        # De-dupe rows
+        if all_rows:
+            seen_ids: Set[str] = set()
+            deduped_rows: List[Dict[str, Any]] = []
+            for r in all_rows:
+                rid = r.get("Id")
+                if rid:
+                    if rid in seen_ids:
+                        continue
+                    seen_ids.add(rid)
+                deduped_rows.append(r)
+            all_rows = deduped_rows
 
         self.results[entity_name] = all_rows
 
@@ -93,8 +108,14 @@ class SoqlEngine:
 
         else:
             if node.where:
-                dependency_sets = re.findall(r"\$\{([a-zA-Z0-9_]+)\}", node.where)
-                for dependency_set in dependency_sets:
+                # De-dupe dependencies
+                dep_names = re.findall(r"\$\{([a-zA-Z0-9_]+)\}", node.where)
+                unique_dep_names: List[str] = []
+                for name in dep_names:
+                    if name not in unique_dep_names:
+                        unique_dep_names.append(name)
+
+                for dependency_set in unique_dep_names:
                     dependency_set_values = self.catalog_map.get(dependency_set)
                     if dependency_set_values:
                         for dependency_chunk in (list(self._chunked_set(dependency_set_values, 200))):

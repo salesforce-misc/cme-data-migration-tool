@@ -47,6 +47,7 @@ def generate_hierarchical_html_report(
     instance_url: str | None,
     cutoff_iso: str,
     engine_results: Dict[str, List[Dict[str, Any]]] | None = None,
+    history_by_parent_id: Dict[str, List[Dict[str, Any]]] | None = None,
 ) -> str:
     """
     Generate a hierarchical HTML report
@@ -152,11 +153,47 @@ def generate_hierarchical_html_report(
         )
         created_txt = _escape(record.get("CreatedDate") or "")
         modified_txt = _escape(record.get("LastModifiedDate") or "")
+       
+        changes_html = ''
+        rid = record.get("Id") if record else None
+        if rid and history_by_parent_id:
+            changes = history_by_parent_id.get(rid, []) or []
+            if changes:
+                max_items = 5
+                items: List[str] = []
+                for idx, h in enumerate(changes):
+                    if idx >= max_items:
+                        remaining = len(changes) - max_items
+                        items.append(
+                            '<div class="change-more">'
+                            f'<div class="grey-text">(+{remaining} more)</div>'
+                            '</div>'
+                        )
+                        break
+                    dt = _escape(h.get('CreatedDate') or '')
+                    field = _escape(h.get('Field') or '')
+                    has_old = (h.get('OldValue') is not None)
+                    has_new = (h.get('NewValue') is not None)
+                    oldv = _escape(h.get('OldValue') if has_old else '')
+                    newv = _escape(h.get('NewValue') if has_new else '')
+                    block_lines: List[str] = []
+                    block_lines.append(f'<div>Date: <strong>{dt}</strong></div>')
+                    block_lines.append(f'<div>Field: <strong>{field}</strong></div>')
+                    if has_old:
+                        block_lines.append(f'<div>Old: <strong>{oldv}</strong></div>')
+                    if has_new:
+                        block_lines.append(f'<div>New: <strong>{newv}</strong></div>')
+                    items.append(
+                        '<div class="change-block" style="margin-bottom:8px">' + ''.join(block_lines) + '</div>'
+                    )
+                changes_html = ''.join(items)
+
         rows_html.append(
             f'<tr data-depth="{depth}" class="{"parent" if has_children else ""}">'
             f'<td>{entity_cell}</td>'
-            f'<td class="{created_cls}">{created_txt}</td>'
-            f'<td class="{modified_cls}">{modified_txt}</td>'
+            f'<td class="nowrap {created_cls}">{created_txt}</td>'
+            f'<td class="nowrap {modified_cls}">{modified_txt}</td>'
+            f'<td class="nowrap">{changes_html}</td>'
             '</tr>'
         )
 
@@ -164,7 +201,7 @@ def generate_hierarchical_html_report(
         indent_px = max(0, depth) * 16
         rows_html.append(
             f'<tr data-depth="{depth}" class="section-header parent">'
-            f'<td colspan="3">'
+            f'<td colspan="4">'
             f'<div style="margin-left:{indent_px}px; display:flex; align-items:flex-start; gap:6px">'
             f'<span class="material-icons tiny toggle-icon" onclick="toggleRow(this)" title="Collapse/Expand">expand_more</span>'
             f'<div style="font-weight:700">{_escape(title)}</div>'
