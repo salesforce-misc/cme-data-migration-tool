@@ -8,28 +8,6 @@ from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 from src.cme_catalog_change_detection_tool.utils.salesforce_client import SalesforceClient
 
 
-HISTORY_DEFAULT_BASE: str = (
-    "SELECT Id, ${parent_field}, Field, OldValue, NewValue, CreatedDate, CreatedById FROM ${history_sobject}"
-)
-HISTORY_DEFAULT_WHERE: str = (
-    "${parent_field} IN (${ids}) AND CreatedDate >= ${cutoff_iso}"
-)
-
-
-def _chunked(items: Iterable[str], size: int) -> Iterable[List[str]]:
-    '''
-    Return a chunk of items based on the input size
-    '''
-    chunk: List[str] = []
-    for i in items:
-        chunk.append(i)
-        if len(chunk) >= size:
-            yield chunk
-            chunk = []
-    if chunk:
-        yield chunk
-
-
 def derive_history_sobject_name(object_api_name: str) -> str:
     """
     Derive the History SObject API name from SObject API name.
@@ -52,18 +30,9 @@ def history_parent_field(object_api_name: str) -> str:
     return f"{object_api_name}Id"
 
 
-def _build_history_soql(hist_sobj: str, parent_field: str, ids_csv: str, cutoff_iso: str) -> Optional[str]:
-    """
-    Build the SOQL query for History object
-    """
-    base_query = HISTORY_DEFAULT_BASE.replace("${history_sobject}", hist_sobj).replace("${parent_field}", parent_field)
-    where_clause = HISTORY_DEFAULT_WHERE.replace("${parent_field}", parent_field).replace("${ids}", ids_csv).replace("${cutoff_iso}", cutoff_iso)
-    full = f"{base_query} WHERE {where_clause}"
-    return full
-
-
 def fetch_history_map(
     sf_client: SalesforceClient,
+    engine: Any,
     ids: Set[str],
     hist_sobj: str,
     parent_field: str,
@@ -73,11 +42,10 @@ def fetch_history_map(
     """
     Fetch History records for the given IDs
     """
-
     entity_rows = []
-    for chunk in _chunked(sorted(ids), chunk_size):
+    for chunk in engine._chunked_set(sorted(ids), chunk_size):
         ids_csv = ",".join([f"'{i}'" for i in chunk])
-        soql = _build_history_soql(hist_sobj, parent_field, ids_csv, cutoff_iso)
+        soql = engine.build_history_soql(hist_sobj, parent_field, ids_csv, cutoff_iso)
         rows = sf_client.query(soql)
         entity_rows.extend(rows)
 
@@ -146,7 +114,8 @@ def collect_history_for_recent_changes(
         if ids and (entity_name in history_name_api_map) and (entity_name in parent_field_map):
             hist_sobj = history_name_api_map[entity_name]
             parent_field = parent_field_map[entity_name]
-            history_rows = fetch_history_map(sf_client, ids, hist_sobj, parent_field, cutoff_iso)
+
+            history_rows = fetch_history_map(sf_client, engine, ids, hist_sobj, parent_field, cutoff_iso)
             # Group rows by the parent Id field so report_generator can access by record Id
             for h in history_rows or []:
                 pid = (h or {}).get(parent_field)

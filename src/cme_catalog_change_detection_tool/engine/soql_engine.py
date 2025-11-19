@@ -182,3 +182,17 @@ class SoqlEngine:
                 json.dump(rows, f, indent=2)
 
 
+    def build_history_soql(self, hist_sobj: str, parent_field: str, ids_csv: str, cutoff_iso: str) -> Optional[str]:
+        """
+        Build the SOQL query for History object
+        """
+        HISTORY_DEFAULT_BASE: str = (
+            "SELECT Id, ${parent_field}, Field, OldValue, NewValue, CreatedDate, CreatedById FROM ${history_sobject}"
+        )
+        HISTORY_DEFAULT_WHERE: str = (
+            "${parent_field} IN (${ids}) AND CreatedDate >= ${cutoff_iso}"
+        )
+        base_query = HISTORY_DEFAULT_BASE.replace("${history_sobject}", hist_sobj).replace("${parent_field}", parent_field)
+        where_clause = HISTORY_DEFAULT_WHERE.replace("${parent_field}", parent_field).replace("${ids}", ids_csv).replace("${cutoff_iso}", cutoff_iso)
+        full = f"{base_query} WHERE {where_clause}"
+        return full
