@@ -6,9 +6,35 @@ body { background: #fafafa; margin: 0; }
 
 .highlight-cell { background: #fff59d; }
 
+/* "Highlighted only" — hide rows without any highlighted cell (class toggled in hierarchy.js) */
+tbody tr.filter-highlight-only-hidden {
+  display: none !important;
+}
+
 .id-link a { word-break: break-all; }
 
+/* Section groups: header + rows share a left rail so blocks read as one unit */
+tr.section-header > td.section-header-cell {
+  background: #e8eaf6 !important;
+  border-left: 4px solid #5c6bc0;
+  border-bottom: 1px solid #c5cae9;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  vertical-align: middle;
+}
+tr.section-header.collapsed > td.section-header-cell {
+  border-left-color: #9fa8da;
+}
+tr[data-section-group]:not(.section-header) > td:first-child {
+  border-left: 4px solid #e8eaf6;
+  padding-left: 8px;
+}
+tr[data-section-group]:not(.section-header) > td:not(:first-child) {
+  border-left: 1px solid #e8eaf6;
+}
+
 table.striped > tbody > tr:nth-child(odd) { background-color: #f9f9f9; }
+table.striped > tbody > tr.section-header > td { background-color: #e8eaf6 !important; }
 
 .badge { border-radius: 8px; }
 
