@@ -93,6 +93,12 @@ def generate_hierarchical_html_report(
     id_attribute_map: Dict[str, Dict[str, Any]] = {r.get("Id"): r for r in (engine_results.get("Attribute", []) or [])}
     id_attribute_category_map: Dict[str, Dict[str, Any]] = {r.get("Id"): r for r in (engine_results.get("AttributeCategory", []) or [])}
     id_picklist_map: Dict[str, Dict[str, Any]] = {r.get("Id"): r for r in (engine_results.get("Picklist", []) or [])}
+    # PicklistId -> list of PicklistValue records (for rendering under each Picklist section)
+    plid_to_picklist_values: Dict[str, List[Dict[str, Any]]] = {}
+    for r in (engine_results.get("PicklistValue", []) or []):
+        plid = r.get("vlocity_cmt__PicklistId__c")
+        if plid:
+            plid_to_picklist_values.setdefault(plid, []).append(r)
 
     # RuleId -> RuleFilter records (for fallback when ra_bundle.rule_filters is empty)
     rule_filters_by_rule_id: Dict[str, List[Dict[str, Any]]] = {}
@@ -408,6 +414,14 @@ def generate_hierarchical_html_report(
                         add_section_header("Picklist", depth + 3)
                         for pl in pl_details:
                             add_row("", pl, depth + 4)
+                        pl_values = []
+                        for pid in pl_ids:
+                            pl_values.extend(plid_to_picklist_values.get(pid, []))
+                        pl_values = _dedupe_by_id(pl_values)
+                        if pl_values:
+                            add_section_header("PicklistValue", depth + 3)
+                            for pv in pl_values:
+                                add_row("", pv, depth + 4)
                 if ofa_cats_details:
                     add_section_header("AttributeCategory", depth + 3)
                     for cd in ofa_cats_details:
@@ -437,6 +451,14 @@ def generate_hierarchical_html_report(
                         add_section_header("Picklist", depth + 3)
                         for pl in pl_details:
                             add_row("", pl, depth + 4)
+                        pl_values = []
+                        for pid in pl_ids:
+                            pl_values.extend(plid_to_picklist_values.get(pid, []))
+                        pl_values = _dedupe_by_id(pl_values)
+                        if pl_values:
+                            add_section_header("PicklistValue", depth + 3)
+                            for pv in pl_values:
+                                add_row("", pv, depth + 4)
                 if ab_cats_details:
                     add_section_header("AttributeCategory", depth + 3)
                     for cd in ab_cats_details:
@@ -541,6 +563,22 @@ def generate_hierarchical_html_report(
                 add_section_header("Attribute", depth + 2)
                 for ad in attrs_details:
                     add_row("", ad, depth + 3)
+                # Group Picklists for these attributes (AttributeAssignment -> Attribute -> Picklist)
+                pl_ids = [(ad or {}).get("vlocity_cmt__PicklistId__c") for ad in attrs_details]
+                pl_ids = [i for i in pl_ids if i]
+                pl_details = _dedupe_by_id([id_picklist_map[i] for i in pl_ids if i in id_picklist_map])
+                if pl_details:
+                    add_section_header("Picklist", depth + 2)
+                    for pl in pl_details:
+                        add_row("", pl, depth + 3)
+                    pl_values = []
+                    for pid in pl_ids:
+                        pl_values.extend(plid_to_picklist_values.get(pid, []))
+                    pl_values = _dedupe_by_id(pl_values)
+                    if pl_values:
+                        add_section_header("PicklistValue", depth + 2)
+                        for pv in pl_values:
+                            add_row("", pv, depth + 3)
             if cats_details:
                 add_section_header("AttributeCategory", depth + 2)
                 for cd in cats_details:

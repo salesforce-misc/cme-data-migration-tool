@@ -33,81 +33,35 @@ function toggleRow(el) {
   }
 }
 
-function getDepth(tr) {
-  return parseInt(tr.dataset.depth || '0', 10);
+const FILTER_HIDDEN_ROW_CLASS = 'filter-highlight-only-hidden';
+
+function rowHasHighlightCell(tr) {
+  return tr.querySelector('td.highlight-cell') != null;
 }
 
-function isHighlighted(tr) {
-  const tds = tr.querySelectorAll('td');
-  if (!tds || tds.length < 3) return false;
-  return tds[1].classList.contains('highlight-cell') || tds[2].classList.contains('highlight-cell');
+function isSectionHeaderRow(tr) {
+  return tr.classList.contains('section-header');
 }
 
+/**
+ * Highlighted only: show full <tr> for rows with .highlight-cell; always keep section-header rows.
+ * Other data rows are hidden.
+ */
 function applyHighlightFilter(onlyHighlighted) {
   const tbody = document.querySelector('tbody');
   if (!tbody) return;
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  if (!onlyHighlighted) {
-    rows.forEach(r => r.style.display = '');
-    return;
-  }
-  const depths = rows.map(getDepth);
-  const include = new Set();
-
-  // Seed with highlighted rows (ignore section headers)
-  rows.forEach((r, idx) => {
-    if (!r.classList.contains('section-header') && isHighlighted(r)) {
-      include.add(idx);
-    }
+  tbody.querySelectorAll('td').forEach((td) => {
+    td.style.display = '';
   });
-
-  // Add ancestors and descendants of highlighted rows
-  include.forEach((idx) => {
-    const baseDepth = depths[idx];
-    // ancestors
-    let j = idx - 1;
-    let minDepth = baseDepth;
-    while (j >= 0) {
-      const dj = depths[j];
-      if (dj < minDepth) {
-        include.add(j);
-        minDepth = dj;
-      }
-      j--;
+  tbody.querySelectorAll('tr').forEach((tr) => {
+    if (!onlyHighlighted) {
+      tr.classList.remove(FILTER_HIDDEN_ROW_CLASS);
+      return;
     }
-    // descendants
-    let k = idx + 1;
-    while (k < rows.length) {
-      const dk = depths[k];
-      if (dk <= baseDepth) break;
-      include.add(k);
-      k++;
-    }
-  });
-
-  // Include section headers that scope any included rows
-  rows.forEach((r, idx) => {
-    if (r.classList.contains('section-header')) {
-      const headerDepth = depths[idx];
-      let k = idx + 1;
-      let shouldInclude = false;
-      while (k < rows.length) {
-        const dk = depths[k];
-        if (dk <= headerDepth) break;
-        if (include.has(k)) { shouldInclude = true; break; }
-        k++;
-      }
-      if (shouldInclude) include.add(idx);
-    }
-  });
-
-  // Show/hide rows and expand any included collapsed parents
-  rows.forEach((r, idx) => {
-    r.style.display = include.has(idx) ? '' : 'none';
-    if (include.has(idx) && r.classList.contains('collapsed')) {
-      r.classList.remove('collapsed');
-      const icon = r.querySelector('.toggle-icon');
-      if (icon) icon.textContent = 'expand_more';
+    if (isSectionHeaderRow(tr) || rowHasHighlightCell(tr)) {
+      tr.classList.remove(FILTER_HIDDEN_ROW_CLASS);
+    } else {
+      tr.classList.add(FILTER_HIDDEN_ROW_CLASS);
     }
   });
 }

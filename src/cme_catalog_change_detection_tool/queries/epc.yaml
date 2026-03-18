@@ -44,6 +44,44 @@ queries:
       - attribute_category_ids:vlocity_cmt__AttributeCategoryId__c
       - attribute_ids:vlocity_cmt__AttributeId__c
 
+  ObjectLayout:
+    api_name: "vlocity_cmt__ObjectLayout__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__ObjectLayout__c"
+    where: "vlocity_cmt__ObjectClassId__c IN (${object_class_ids})"
+    fields_to_collect:
+      - object_layout_ids:Id
+
+  ObjectFacet:
+    api_name: "vlocity_cmt__ObjectFacet__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__FacetId__c, vlocity_cmt__ObjectLayoutId__c FROM vlocity_cmt__ObjectFacet__c"
+    where: "vlocity_cmt__ObjectLayoutId__c IN (${object_layout_ids})"
+    fields_to_collect:
+      - ui_facet_ids:vlocity_cmt__FacetId__c
+      - object_facet_ids:Id
+
+  ObjectSection:
+    api_name: "vlocity_cmt__ObjectSection__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__SectionId__c, vlocity_cmt__ObjectFacetId__c FROM vlocity_cmt__ObjectSection__c"
+    where: "vlocity_cmt__ObjectFacetId__c IN (${object_facet_ids})"
+    fields_to_collect:
+      - ui_section_ids:vlocity_cmt__SectionId__c
+      - object_section_ids:Id
+
+  ObjectElement:
+    api_name: "vlocity_cmt__ObjectElement__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectSectionId__c FROM vlocity_cmt__ObjectElement__c"
+    where: "vlocity_cmt__ObjectSectionId__c IN (${object_section_ids})"
+
+  UIFacet:
+    api_name: "vlocity_cmt__UIFacet__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UIFacet__c"
+    where: "Id IN (${ui_facet_ids})"
+
+  UISection:
+    api_name: "vlocity_cmt__UISection__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UISection__c"
+    where: "Id IN (${ui_section_ids})"
+
   AttributeBinding:
     api_name: "vlocity_cmt__AttributeBinding__c"
     base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__AttributeCategoryId__c, vlocity_cmt__AttributeId__c, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__AttributeBinding__c"
@@ -61,11 +99,6 @@ queries:
       - attribute_ids:vlocity_cmt__AttributeId__c
       - picklist_ids:vlocity_cmt__PicklistId__c
 
-  OverrideDefinition:
-    api_name: "vlocity_cmt__OverrideDefinition__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ProductId__c FROM vlocity_cmt__OverrideDefinition__c"
-    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
-
   AttributeCategory:
     api_name: "vlocity_cmt__AttributeCategory__c"
     base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__AttributeCategory__c"
@@ -79,6 +112,59 @@ queries:
     output_set: attribute_ids
     fields_to_collect:
       - picklist_ids:vlocity_cmt__PicklistId__c
+
+  Picklist:
+    api_name: "vlocity_cmt__Picklist__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__Picklist__c"
+    where: "Id IN (${picklist_ids})"
+
+  PicklistValue:
+    api_name: "vlocity_cmt__PicklistValue__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PicklistId__c FROM vlocity_cmt__PicklistValue__c"
+    where: "vlocity_cmt__PicklistId__c IN (${picklist_ids})"
+
+  OverrideDefinition:
+    api_name: "vlocity_cmt__OverrideDefinition__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ProductId__c FROM vlocity_cmt__OverrideDefinition__c"
+    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
+
+  PriceListEntry:
+    api_name: "vlocity_cmt__PriceListEntry__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PriceListId__c, vlocity_cmt__PricingElementId__c, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c, vlocity_cmt__ProductId__c FROM vlocity_cmt__PriceListEntry__c"
+    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
+    output_set: price_list_entry_ids
+    fields_to_collect:
+      - pricing_element_ids:vlocity_cmt__PricingElementId__c
+      - pricing_variable_ids:vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c
+
+  PricingElement:
+    api_name: "vlocity_cmt__PricingElement__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingElement__c"
+    where: "Id IN (${pricing_element_ids})"
+    fields_to_collect:
+      - pricing_variable_ids:vlocity_cmt__PricingVariableId__c
+
+  PricingVariable:
+    api_name: "vlocity_cmt__PricingVariable__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__PricingVariable__c"
+    where: "Id IN (${pricing_variable_ids})"
+    output_set: pricing_variable_ids
+
+  PricingVariableBinding:
+    api_name: "vlocity_cmt__PricingVariableBinding__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingVariableBinding__c"
+    where: "vlocity_cmt__PricingVariableId__c IN (${pricing_variable_ids})"
+
+  RuleAssignment:
+    api_name: "vlocity_cmt__RuleAssignment__c"
+    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__RuleId__c  FROM vlocity_cmt__RuleAssignment__c"
+    where_any_of:
+      - if_set: product_ids
+        where: "vlocity_cmt__ObjectId__c IN (${product_ids})"
+      - if_set: price_list_entry_ids
+        where: "vlocity_cmt__ObjectId__c IN (${price_list_entry_ids})"
+    fields_to_collect:
+      - rule_ids:vlocity_cmt__RuleId__c
 
   ProductRelationship:
     api_name: "vlocity_cmt__ProductRelationship__c"
@@ -146,80 +232,6 @@ queries:
     api_name: "vlocity_cmt__EntityFilterConditionArgument__c"
     base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__FilterConditionId__c FROM vlocity_cmt__EntityFilterConditionArgument__c"
     where: "vlocity_cmt__FilterConditionId__c IN (${entity_filter_condition_ids})"
-
-  ObjectLayout:
-    api_name: "vlocity_cmt__ObjectLayout__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectClassId__c FROM vlocity_cmt__ObjectLayout__c"
-    where: "vlocity_cmt__ObjectClassId__c IN (${object_class_ids})"
-    fields_to_collect:
-      - object_layout_ids:Id
-
-  ObjectFacet:
-    api_name: "vlocity_cmt__ObjectFacet__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__FacetId__c, vlocity_cmt__ObjectLayoutId__c FROM vlocity_cmt__ObjectFacet__c"
-    where: "vlocity_cmt__ObjectLayoutId__c IN (${object_layout_ids})"
-    fields_to_collect:
-      - ui_facet_ids:vlocity_cmt__FacetId__c
-      - object_facet_ids:Id
-
-  ObjectSection:
-    api_name: "vlocity_cmt__ObjectSection__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__SectionId__c, vlocity_cmt__ObjectFacetId__c FROM vlocity_cmt__ObjectSection__c"
-    where: "vlocity_cmt__ObjectFacetId__c IN (${object_facet_ids})"
-    fields_to_collect:
-      - ui_section_ids:vlocity_cmt__SectionId__c
-      - object_section_ids:Id
-
-  ObjectElement:
-    api_name: "vlocity_cmt__ObjectElement__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__ObjectSectionId__c FROM vlocity_cmt__ObjectElement__c"
-    where: "vlocity_cmt__ObjectSectionId__c IN (${object_section_ids})"
-
-  UIFacet:
-    api_name: "vlocity_cmt__UIFacet__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UIFacet__c"
-    where: "Id IN (${ui_facet_ids})"
-
-  UISection:
-    api_name: "vlocity_cmt__UISection__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__UISection__c"
-    where: "Id IN (${ui_section_ids})"
-
-  PriceListEntry:
-    api_name: "vlocity_cmt__PriceListEntry__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PriceListId__c, vlocity_cmt__PricingElementId__c, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c, vlocity_cmt__ProductId__c FROM vlocity_cmt__PriceListEntry__c"
-    where: "vlocity_cmt__ProductId__c IN (${product_ids})"
-    fields_to_collect:
-      - pricing_element_ids:vlocity_cmt__PricingElementId__c
-      - pricing_variable_ids:vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c
-
-  PricingElement:
-    api_name: "vlocity_cmt__PricingElement__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingElement__c"
-    where: "Id IN (${pricing_element_ids})"
-    fields_to_collect:
-      - pricing_variable_ids:vlocity_cmt__PricingVariableId__c
-
-  PricingVariable:
-    api_name: "vlocity_cmt__PricingVariable__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__PricingVariable__c"
-    where: "Id IN (${pricing_variable_ids})"
-    output_set: pricing_variable_ids
-
-  PricingVariableBinding:
-    api_name: "vlocity_cmt__PricingVariableBinding__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PricingVariableId__c FROM vlocity_cmt__PricingVariableBinding__c"
-    where: "vlocity_cmt__PricingVariableId__c IN (${pricing_variable_ids})"
-
-  Picklist:
-    api_name: "vlocity_cmt__Picklist__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate FROM vlocity_cmt__Picklist__c"
-    where: "Id IN (${picklist_ids})"
-
-  PicklistValue:
-    api_name: "vlocity_cmt__PicklistValue__c"
-    base: "SELECT Id, Name, CreatedDate, LastModifiedDate, vlocity_cmt__PicklistId__c FROM vlocity_cmt__PicklistValue__c"
-    where: "vlocity_cmt__PicklistId__c IN (${picklist_ids})"
 
   # Calculation Matrix and related
   CalculationMatrix:

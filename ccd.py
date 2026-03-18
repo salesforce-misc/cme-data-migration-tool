@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+
 """
 CLI entrypoint
 - Reads Salesforce credentials and settings from a JSON file
@@ -35,49 +36,7 @@ from src.cme_catalog_change_detection_tool.engine.pci_resolver import PCIResolve
 from src.cme_catalog_change_detection_tool.utils.hierarchy_builder import build_product_hierarchy
 from src.cme_catalog_change_detection_tool.utils.report_generator import generate_hierarchical_html_report
 from src.cme_catalog_change_detection_tool.engine.history_retriever import collect_history_for_recent_changes
-
-
-# Execute queries in order
-execution_order: List[str] = [
-    "Product2",
-    "ProductChildItem",
-    "ObjectClass",
-    "ObjectFieldAttribute",
-    "AttributeBinding",
-    "AttributeAssignment",
-    "OverrideDefinition",
-    "ProductRelationship",
-    "ProductConfigurationProcedure",
-    "RuleAction",
-    "Rule",
-    "RuleVariable",
-    "RuleFilter",
-    "EntityFilter",
-    "EntityFilterCondition",
-    "EntityFilterMember",
-    "EntityFilterConditionArgument",
-    "PriceListEntry",
-    "PricingElement",
-    "PricingVariable",
-    "PricingVariableBinding",
-    "ObjectLayout",
-    "ObjectFacet",
-    "ObjectSection",
-    "ObjectElement",
-    "UIFacet",
-    "UISection",
-    "Attribute",
-    "AttributeCategory",
-    "Picklist",
-    "PicklistValue",
-    "CalculationMatrix",
-    "CalculationMatrixVersion",
-    "CalculationMatrixRow",
-    "CalculationProcedure",
-    "CalculationProcedureVersion",
-    "CalculationProcedureStep",
-    "CpqConfigurationSetup",
-]
+from src.cme_catalog_change_detection_tool.builders.report_builder import ReportBuilder
 
 
 def main() -> None:
@@ -108,6 +67,7 @@ def main() -> None:
 
     # Execute queries in order
     print("\nFetching Product bundle & its related entity records")
+    execution_order = engine.query_defs.keys()
     total = len(execution_order)
     entity_counts: List[tuple[str, int]] = []
     for idx, entity_name in enumerate(execution_order, start=1):
@@ -130,10 +90,6 @@ def main() -> None:
         table.add_row(entity, str(count))
     Console().print(table)
 
-    # Build hierarchy of objects based on dependencies
-    products_tree = build_product_hierarchy(engine, cfg.product_id)
-    report_path = str(Path(out_dir) / "epc_changes.html")
-
 
     # Prepare cutoff and fetch history in one call
     n = cfg.number_of_days
@@ -145,22 +101,12 @@ def main() -> None:
         cutoff_iso=cutoff_iso,
     )
 
-    # Build HTML report
-    title = f"EPC Changes in last {n} days"
-    subtitle = f"Generated at {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%SZ')} (UTC)"
-
     # Write HTML report
-    generate_hierarchical_html_report(
-        products=products_tree,
-        output_path=report_path,
-        title=title,
-        subtitle=subtitle,
-        instance_url=cfg.instance_url,
-        cutoff_iso=cutoff_iso,
-        engine_results=engine.results,
-        history_by_parent_id=history_by_parent,
-    )
-    print(f"HTML report written to {report_path}")
+    report_path = str(Path(out_dir) / "epc_changes.html")
+    cfg.output_path = report_path
+    ReportBuilder(cfg, engine.results, history_by_parent).build_hierarchy_report(cfg.product_id)
+    print(f"Hierarchy report written to {report_path}")
+    
 
     # Open HTML report in browser
     try:
