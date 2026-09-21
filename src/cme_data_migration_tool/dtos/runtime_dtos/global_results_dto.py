@@ -10,7 +10,8 @@ class GlobalResultsDTO():
     existing_record_count = {}
     new_record_count = {}
     globalobjectimportfileinfomap = {}
-    
+    destination_id_by_matching_key = {}
+
     @staticmethod
     def get_import_sequence():
         return {'object_import_sequence' : GlobalResultsDTO.file_import_sequence, 'file_import_sequence' : GlobalResultsDTO.file_import_sequence}

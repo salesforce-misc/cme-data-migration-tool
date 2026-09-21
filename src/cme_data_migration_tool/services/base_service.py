@@ -5,6 +5,7 @@ from collections import OrderedDict
 from src.cme_data_migration_tool.utils.nsf import nsf
 from src.cme_data_migration_tool.utils.query_utils import QueryUtils
 from src.cme_data_migration_tool.dtos.configurations_dtos.matching_keys_dto import MatchingKeysDTO
+from src.cme_data_migration_tool.dtos.configurations_dtos.migration_obj_template_dto import MigrationObjTemplateDTO
 from src.cme_data_migration_tool.dtos.runtime_dtos.global_results_dto import GlobalResultsDTO
 
 class BaseService:
@@ -32,13 +33,22 @@ class BaseService:
         if not referencefield:
             recordresult["referenceresult"] = referenceresult
         record_dict = dict(filter(BaseService.filter_sobject_fields, record.items()))
-        
+        objectconfig = MigrationObjTemplateDTO.getsourceinstance(objectname)
+
         for recordfieldname,recordfielddata in record_dict.items():
             key = nsf.mask(orgconfig, recordfieldname)
             value = recordfielddata
             if isinstance(recordfielddata, OrderedDict):
                 maskedrefobject = nsf.mask(orgconfig, recordfielddata.get("attributes").get("type"))
-                referenceresult[key] = BaseService.processqueryrecord(maskedrefobject, recordfielddata, orgconfig, True)
+                processedreference = BaseService.processqueryrecord(maskedrefobject, recordfielddata, orgconfig, True)
+                referenceresult[key] = processedreference
+                # the raw lookup field (e.g. "childcatalogid__c") is never queried as a scalar -
+                # only its "__r" relationship is - so stand in the referenced record's own
+                # (portable, cross-org) matching key here for matching-key generation and,
+                # on import, cross-org id resolution
+                rawfieldname = objectconfig.referencetofieldmapping.get(key)
+                if rawfieldname is not None:
+                    fieldresult[rawfieldname] = processedreference["matchingkeyinfo"]["matchingkey"]
             else:
                 fieldresult[key] = value
 
@@ -50,6 +60,7 @@ class BaseService:
     def savefile(self, fpath, result, resultname):
         # with alive_bar(1, bar = 'classic', title="saving results of "+resultname) as bar:
         if self.test is False:
+            os.makedirs(os.path.dirname(fpath), exist_ok=True)
             if os.path.isfile(fpath) :
                 os.remove(fpath)
             with open(fpath, 'w') as f:

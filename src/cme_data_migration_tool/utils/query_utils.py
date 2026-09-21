@@ -55,16 +55,16 @@ class QueryUtils:
     def generatematchingkeyinfo(cls, objectname, datafields):
         objectmatchingkeysmap = MatchingKeysDTO.getinstance()
         matchingkeyfields = objectmatchingkeysmap.matching_keys[objectname]
-        matchingkey = ''
         matchingkeyqueryfieldswithdata = {}
+        matchingkeyparts = []
         for matchingkeyfield in matchingkeyfields:
-            if matchingkeyfield in datafields.keys():
-                if matchingkeyfield not in datafields.keys() or datafields[matchingkeyfield] == None:
-                    print('matching key missing for object  {} and matching key is {} with complete data fields as {}'.format(objectname, matchingkeyfield, json.dumps(datafields)))
-                matchingkey = datafields[matchingkeyfield] if matchingkey == '' else matchingkey + '-' + datafields[matchingkeyfield]
-                matchingkeyqueryfieldswithdata[matchingkeyfield] = datafields[matchingkeyfield]
-            else:
-                raise KeyError("Matching keys not found for object = {} with id = {} and relevant matching key field is {}".format(objectname, datafields["id"], matchingkeyfield))
+            fieldvalue = datafields.get(matchingkeyfield)
+            if fieldvalue is None:
+                print('matching key field missing or null for object {} and matching key field is {} with complete data fields as {}'.format(objectname, matchingkeyfield, json.dumps(datafields)))
+                continue
+            matchingkeyparts.append(fieldvalue)
+            matchingkeyqueryfieldswithdata[matchingkeyfield] = fieldvalue
+        matchingkey = '-'.join(matchingkeyparts)
         matchingkeymap = {
             'matchingkey' : matchingkey,
             'matchingkeyqueryfieldswithdata' : matchingkeyqueryfieldswithdata,

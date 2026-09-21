@@ -19,7 +19,8 @@
         "$namespace$__globalkey__c",
         "$namespace$__industryvertical__c",
         "$namespace$__isprivate__c",
-        "$namespace$__status__c"
+        "$namespace$__status__c",
+        "$namespace$__shouldincludeintrimmode__c"
     ],
     "readonlyfields": [
         "id",

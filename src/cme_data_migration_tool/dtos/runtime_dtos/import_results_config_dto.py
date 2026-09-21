@@ -7,8 +7,13 @@ from src.cme_data_migration_tool.utils.nsf import nsf
 class ImportResultsConfigDTO(BaseDTO):
 
     @staticmethod
-    def getinstance(resultconfig):    
-        return ImportResultsConfigDTO.from_json_file_path('./results/'+resultconfig)
+    def getinstance(resultconfig):
+        if resultconfig.endswith('.json'):
+            resultconfig = resultconfig[:-len('.json')]
+        instance = ImportResultsConfigDTO.from_json_file_path('./results/'+resultconfig)
+        if instance is None:
+            raise FileNotFoundError('Import results file not found: ./results/{}.json'.format(resultconfig))
+        return instance
     
     def __init__(self, **kwargs):
         self.import_configs = kwargs

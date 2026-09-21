@@ -16,19 +16,24 @@ class DescribeAction(BaseAction):
         self.destination_auth_headers, self.destination_session, self.destination_url = self.get_auth_headers(OrgConfigDTO.getdestinationorg())
     
     def get_auth_headers(self, orgconfig):
-        payload = {
-          "grant_type": "password",
-          "client_id": orgconfig.consumer_key,
-          "client_secret": orgconfig.consumer_secret,
-          "username": orgconfig.username,
-          "password": orgconfig.password
-        }
+        if orgconfig.auth_type == "session":
+            access_token, instance_url = OrgConfigDTO.exchange_client_credentials_token(
+                orgconfig.consumer_key, orgconfig.consumer_secret, orgconfig.instance_url
+            )
+        else:
+            payload = {
+              "grant_type": "password",
+              "client_id": orgconfig.consumer_key,
+              "client_secret": orgconfig.consumer_secret,
+              "username": orgconfig.username,
+              "password": orgconfig.password
+            }
 
-        login_endpoint = orgconfig.instance_url+"/services/oauth2/token"
-        headers = { "Content-Type": "application/x-www-form-urlencoded" }
-        response = session.post(login_endpoint, headers=headers, data=payload)
-        access_token = json.loads(response.text).get("access_token")
-        instance_url = json.loads(response.text).get("instance_url")
+            login_endpoint = orgconfig.instance_url+"/services/oauth2/token"
+            headers = { "Content-Type": "application/x-www-form-urlencoded" }
+            response = session.post(login_endpoint, headers=headers, data=payload)
+            access_token = json.loads(response.text).get("access_token")
+            instance_url = json.loads(response.text).get("instance_url")
 
         headers = {
           "Content-Type": "application/json; charset=UTF-8",
@@ -82,9 +87,11 @@ class DescribeAction(BaseAction):
       maskedobjname = objectname.replace(namespace, "$namespace$")
       referencefields = []
       referencetofieldmapping = {}
+      real_field_names = set()
       for fieldMetadata in data['fields']:
         fname = fieldMetadata["name"].lower().replace(namespace, "$namespace$")
-        if fname not in standard_fields_to_exclude:      
+        real_field_names.add(fname)
+        if fname not in standard_fields_to_exclude:
           ftype = fieldMetadata["type"]
           creatable = fieldMetadata["createable"]
           updateable = fieldMetadata["updateable"]
@@ -119,6 +126,9 @@ class DescribeAction(BaseAction):
           "referencetofieldmapping" : referencetofieldmapping,
           "childobjectstomigrate" : childs
         }
+
+      self.healmatchingkey(mobjectname, real_field_names)
+
       filePath  = './src/cme_data_migration_tool/configurations/'+ org_type +'/'+ mobjectname +'.json'
       if(os.path.isfile(filePath)):
         os.remove(filePath)
@@ -134,6 +144,27 @@ class DescribeAction(BaseAction):
       for parentField in relatedParentFields:
         self.populateDescribeForObjects(org_type, parentField.replace("$namespace$", namespace), describedObjects, auth_headers, session, instance_url, namespace)
 
+
+    def healmatchingkey(self, mobjectname, real_field_names):
+        matchingkeysdto = MatchingKeysDTO.getinstance()
+        if mobjectname not in matchingkeysdto.matching_keys:
+            return
+        configuredkeyfields = matchingkeysdto.matching_keys[mobjectname]
+        missingfields = [field for field in configuredkeyfields if field not in real_field_names]
+        if not missingfields:
+            return
+        if len(configuredkeyfields) == 1:
+            print("matching key '{}' for {} not found in org, healing to 'name'".format(configuredkeyfields[0], mobjectname))
+            matchingkeysdto.matching_keys[mobjectname] = ["name"]
+            self.savematchingkeys(matchingkeysdto.matching_keys)
+        else:
+            print("composite matching key for {} has missing field(s) {} - left unchanged, please review manually".format(mobjectname, missingfields))
+
+    def savematchingkeys(self, matching_keys):
+        filepath = './src/cme_data_migration_tool/configurations/object_matchingkey_configurations/matchingkeys.json'
+        serializable = {objectname: ",".join(fields) for objectname, fields in matching_keys.items()}
+        with open(filepath, 'w') as f:
+            json.dump(serializable, f, indent=4)
 
     def execute_action(self):
         describedObjects = set()

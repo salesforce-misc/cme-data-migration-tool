@@ -3,6 +3,7 @@ from alive_progress import alive_bar
 from src.cme_data_migration_tool.dtos.configurations_dtos.org_config_dto import OrgConfigDTO
 from src.cme_data_migration_tool.dtos.runtime_dtos.global_results_dto import GlobalResultsDTO
 from src.cme_data_migration_tool.services.export_service import ExportService
+from src.cme_data_migration_tool.utils.nsf import nsf
 
 class ExportBundle():
     def __init__(self):
@@ -46,22 +47,31 @@ class ExportBundle():
         if len(productids) == 0:
             return None
         product_ids = []
-        
+
         objectidsstring =  ",".join("'" + objectid + "'" for objectid in productids)
-        querystring = "SELECT Id, vlocity_cmt__ParentProductId__c, vlocity_cmt__ParentProductId__r.vlocity_cmt__ObjectTypeId__c, vlocity_cmt__ParentProductId__r.RecordTypeId, vlocity_cmt__ChildProductId__c, vlocity_cmt__ChildProductId__r.vlocity_cmt__GlobalKey__c FROM vlocity_cmt__ProductChildItem__c WHERE vlocity_cmt__ParentProductId__c in ({})".format(objectidsstring)
+        pciobj = nsf.unmask(self.orgconfig, "$namespace$__productchilditem__c")
+        parentfield = nsf.unmask(self.orgconfig, "$namespace$__parentproductid__c")
+        parentreffield = nsf.unmask(self.orgconfig, "$namespace$__parentproductid__r")
+        objecttypefield = nsf.unmask(self.orgconfig, "$namespace$__objecttypeid__c")
+        childfield = nsf.unmask(self.orgconfig, "$namespace$__childproductid__c")
+        childreffield = nsf.unmask(self.orgconfig, "$namespace$__childproductid__r")
+        globalkeyfield = nsf.unmask(self.orgconfig, "$namespace$__globalkey__c")
+        querystring = "SELECT Id, {1}, {2}.{3}, {2}.RecordTypeId, {4}, {5}.{6} FROM {0} WHERE {1} in ({7})".format(
+            pciobj, parentfield, parentreffield, objecttypefield, childfield, childreffield, globalkeyfield, objectidsstring)
         # data = orgconfig.org_connector.query_all_iter(querystring)
-        fetch_results = self.orgconfig.org_connector.bulk.__getattr__('vlocity_cmt__ProductChildItem__c').query(querystring, lazy_operation=True)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__(pciobj).query(querystring, lazy_operation=True)
         for list_results in fetch_results:
-            for result in list_results :
-                self.finalpciids.append(result['Id'])
-                parent_product = result['vlocity_cmt__ParentProductId__r']
+            for raw_result in list_results :
+                result = nsf.lowerkeys(raw_result)
+                self.finalpciids.append(result['id'])
+                parent_product = result[parentreffield]
                 if parent_product != None:
-                    recordtypeid = parent_product['RecordTypeId']
-                    objectclassid = parent_product['vlocity_cmt__ObjectTypeId__c']
+                    recordtypeid = parent_product['recordtypeid']
+                    objectclassid = parent_product[objecttypefield]
                     self.finalobjectclassids.add(objectclassid) if objectclassid is not None else None
                     self.finalrecorditypeds.add(recordtypeid) if recordtypeid is not None else None
-                if result['vlocity_cmt__ChildProductId__c'] != None:
-                    product_ids.append(result['vlocity_cmt__ChildProductId__c'])
+                if result[childfield] != None:
+                    product_ids.append(result[childfield])
 
         product_ids = list(set(product_ids))
         self.finalprodids.extend(product_ids)
@@ -77,69 +87,117 @@ class ExportBundle():
         if len(object_to_query) == 0:
             return None
         objectidsstring =  ",".join("'" + objectid + "'" for objectid in object_to_query)
-        querystring = "SELECT Id,vlocity_cmt__AttributeCategoryId__c,vlocity_cmt__AttributeId__c FROM vlocity_cmt__AttributeAssignment__c WHERE vlocity_cmt__ObjectId__c in ({})".format(objectidsstring)
+        attrassignobj = nsf.unmask(self.orgconfig, "$namespace$__attributeassignment__c")
+        attrcatfield = nsf.unmask(self.orgconfig, "$namespace$__attributecategoryid__c")
+        attrfield = nsf.unmask(self.orgconfig, "$namespace$__attributeid__c")
+        objectfield = nsf.unmask(self.orgconfig, "$namespace$__objectid__c")
+        querystring = "SELECT Id,{1},{2} FROM {0} WHERE {3} in ({4})".format(attrassignobj, attrcatfield, attrfield, objectfield, objectidsstring)
         # data = orgconfig.org_connector.query_all_iter(querystring)
-        fetch_results = self.orgconfig.org_connector.bulk.__getattr__('vlocity_cmt__AttributeAssignment__c').query(querystring, lazy_operation=True)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__(attrassignobj).query(querystring, lazy_operation=True)
         for list_results in fetch_results:
-            for result in list_results :
-                if result['Id'] != None:
-                    self.finalattrassignids.add(result['Id'])
-                if result['vlocity_cmt__AttributeCategoryId__c'] != None:
-                    self.finalattrcatids.add(result['vlocity_cmt__AttributeCategoryId__c'])
-                if result['vlocity_cmt__AttributeId__c'] != None:
-                    self.finalattrids.add(result['vlocity_cmt__AttributeId__c'])
+            for raw_result in list_results :
+                result = nsf.lowerkeys(raw_result)
+                if result['id'] != None:
+                    self.finalattrassignids.add(result['id'])
+                if result[attrcatfield] != None:
+                    self.finalattrcatids.add(result[attrcatfield])
+                if result[attrfield] != None:
+                    self.finalattrids.add(result[attrfield])
         return None
 
     def getallcompiledoverrides(self):
         if len(self.finalprodids) == 0:
             return None
         objectidsstring =  ",".join("'" + objectid + "'" for objectid in self.finalprodids)
-        querystring = "SELECT vlocity_cmt__CompiledAttributeOverrideId__c, Id FROM vlocity_cmt__OverrideDefinition__c WHERE vlocity_cmt__ProductId__c in ({})".format(objectidsstring)
-        fetch_results = self.orgconfig.org_connector.bulk.__getattr__('vlocity_cmt__OverrideDefinition__c').query(querystring, lazy_operation=True)
+        overridedefobj = nsf.unmask(self.orgconfig, "$namespace$__overridedefinition__c")
+        compiledattrfield = nsf.unmask(self.orgconfig, "$namespace$__compiledattributeoverrideid__c")
+        productfield = nsf.unmask(self.orgconfig, "$namespace$__productid__c")
+        querystring = "SELECT {1}, Id FROM {0} WHERE {2} in ({3})".format(overridedefobj, compiledattrfield, productfield, objectidsstring)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__(overridedefobj).query(querystring, lazy_operation=True)
         for list_results in fetch_results:
-            for result in list_results :
-                if result['Id'] != None:
-                    self.finaloverridedefs.add(result['Id'])
-                if result['vlocity_cmt__CompiledAttributeOverrideId__c'] != None:
-                    self.finalcompiledattrids.add(result['vlocity_cmt__CompiledAttributeOverrideId__c'])
+            for raw_result in list_results :
+                result = nsf.lowerkeys(raw_result)
+                if result['id'] != None:
+                    self.finaloverridedefs.add(result['id'])
+                if result[compiledattrfield] != None:
+                    self.finalcompiledattrids.add(result[compiledattrfield])
         return None
 
     def getallples(self):
         if len(self.finalprodids) == 0:
             return None
         objectidsstring =  ",".join("'" + objectid + "'" for objectid in self.finalprodids)
-        querystring = "SELECT Id, vlocity_cmt__PricingElementId__c, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__c, vlocity_cmt__PriceBookEntryId__c, vlocity_cmt__PriceListId__c FROM vlocity_cmt__PriceListEntry__c WHERE vlocity_cmt__ProductId__c in ({})".format(objectidsstring)
-        fetch_results = self.orgconfig.org_connector.bulk.__getattr__('vlocity_cmt__PriceListEntry__c').query(querystring, lazy_operation=True)
+        pleobj = nsf.unmask(self.orgconfig, "$namespace$__pricelistentry__c")
+        pefield = nsf.unmask(self.orgconfig, "$namespace$__pricingelementid__c")
+        pereffield = nsf.unmask(self.orgconfig, "$namespace$__pricingelementid__r")
+        pvfield = nsf.unmask(self.orgconfig, "$namespace$__pricingvariableid__c")
+        pbefield = nsf.unmask(self.orgconfig, "$namespace$__pricebookentryid__c")
+        plfield = nsf.unmask(self.orgconfig, "$namespace$__pricelistid__c")
+        productfield = nsf.unmask(self.orgconfig, "$namespace$__productid__c")
+        objecttypefield = nsf.unmask(self.orgconfig, "$namespace$__objecttypeid__c")
+        querystring = "SELECT Id, {1}, {2}.{3}, {2}.{8}, {4}, {5} FROM {0} WHERE {6} in ({7})".format(
+            pleobj, pefield, pereffield, pvfield, pbefield, plfield, productfield, objectidsstring, objecttypefield)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__(pleobj).query(querystring, lazy_operation=True)
         for list_results in fetch_results:
-            for result in list_results :
-                if result['Id'] != None:
-                    self.finalpleids.add(result['Id'])
-                if result['vlocity_cmt__PriceBookEntryId__c'] != None:
-                    self.finalpbeids.add(result['vlocity_cmt__PriceBookEntryId__c'])
-                if result['vlocity_cmt__PricingElementId__c'] != None:
-                    self.finalpeids.add(result['vlocity_cmt__PricingElementId__c'])
-                if result['vlocity_cmt__PriceListId__c'] != None:
-                    self.finalplids.add(result['vlocity_cmt__PriceListId__c'])
-                if result['vlocity_cmt__PricingElementId__r'] != None and result['vlocity_cmt__PricingElementId__r']['vlocity_cmt__PricingVariableId__c'] != None:
-                    self.finalpvids.add(result['vlocity_cmt__PricingElementId__r']['vlocity_cmt__PricingVariableId__c'])
+            for raw_result in list_results :
+                result = nsf.lowerkeys(raw_result)
+                if result['id'] != None:
+                    self.finalpleids.add(result['id'])
+                if result[pbefield] != None:
+                    self.finalpbeids.add(result[pbefield])
+                if result[pefield] != None:
+                    self.finalpeids.add(result[pefield])
+                if result[plfield] != None:
+                    self.finalplids.add(result[plfield])
+                if result[pereffield] != None and result[pereffield][pvfield] != None:
+                    self.finalpvids.add(result[pereffield][pvfield])
+                if result[pereffield] != None and result[pereffield][objecttypefield] != None:
+                    self.finalobjectclassids.add(result[pereffield][objecttypefield])
         return None
     
+    def getallpricebooks(self):
+        if len(self.finalpbeids) == 0:
+            return None
+        objectidsstring = ",".join("'" + objectid + "'" for objectid in self.finalpbeids)
+        querystring = "SELECT Id, Pricebook2Id FROM PricebookEntry WHERE Id in ({0})".format(objectidsstring)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__("PricebookEntry").query(querystring, lazy_operation=True)
+        for list_results in fetch_results:
+            for raw_result in list_results:
+                result = nsf.lowerkeys(raw_result)
+                if result['pricebook2id'] != None:
+                    self.finalpbids.add(result['pricebook2id'])
+        return None
+
     def getAllCPR(self):
         if len(self.finalprodids) == 0:
             return None
         objectidsstring =  ",".join("'" + objectid + "'" for objectid in self.finalprodids)
-        querystring = "SELECT Id, vlocity_cmt__CatalogId__c, vlocity_cmt__EffectiveDate__c, vlocity_cmt__EndDate__c, vlocity_cmt__IsActive__c, vlocity_cmt__ItemType__c, vlocity_cmt__ProductGroupKey__c, vlocity_cmt__PromotionId__c, vlocity_cmt__SequenceNumber__c FROM vlocity_cmt__CatalogProductRelationship__c WHERE vlocity_cmt__Product2Id__c IN ({})".format(objectidsstring)
-        fetch_results = self.orgconfig.org_connector.bulk.__getattr__('vlocity_cmt__CatalogProductRelationship__c').query(querystring, lazy_operation=True)
+        cprobj = nsf.unmask(self.orgconfig, "$namespace$__catalogproductrelationship__c")
+        catalogfield = nsf.unmask(self.orgconfig, "$namespace$__catalogid__c")
+        productfield = nsf.unmask(self.orgconfig, "$namespace$__product2id__c")
+        fieldlist = ",".join([
+            "Id", catalogfield,
+            nsf.unmask(self.orgconfig, "$namespace$__effectivedate__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__enddate__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__isactive__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__itemtype__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__productgroupkey__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__promotionid__c"),
+            nsf.unmask(self.orgconfig, "$namespace$__sequencenumber__c"),
+        ])
+        querystring = "SELECT {1} FROM {0} WHERE {2} IN ({3})".format(cprobj, fieldlist, productfield, objectidsstring)
+        fetch_results = self.orgconfig.org_connector.bulk.__getattr__(cprobj).query(querystring, lazy_operation=True)
         for list_results in fetch_results:
-            for result in list_results:
-                if result['Id'] != None:
-                    self.finalcprids.add(result['Id'])
-                if result['vlocity_cmt__CatalogId__c'] != None:
-                    self.finalcatalogids.add(result['vlocity_cmt__CatalogId__c'])
-                
+            for raw_result in list_results:
+                result = nsf.lowerkeys(raw_result)
+                if result['id'] != None:
+                    self.finalcprids.add(result['id'])
+                if result[catalogfield] != None:
+                    self.finalcatalogids.add(result[catalogfield])
+
         return None
     
-    def export(self, object, productid):
+    def export(self, object, productid, save_results=True):
         if len(productid) == 0:
             return None
         print('prepping data to export for pcis, products, please wait while we start exporting , this may take few seconds')
@@ -172,8 +230,11 @@ class ExportBundle():
         self.finalexport(list(self.finalpleids), "$namespace$__pricelistentry__c")
         self.finalexport(list(self.finalpeids), "$namespace$__pricingelement__c")
         self.finalexport(list(self.finalpvids), "$namespace$__pricingvariable__c")
+        self.getallpricebooks()
+        self.finalexport(list(self.finalpbids), "pricebook2")
         self.finalexport(list(self.finalpbeids), "pricebookentry")
         # finalexport(list(finalrecorditypeds), "recordtype")
         self.finalexport(list(self.finalobjectclassids), "$namespace$__objectclass__c")
 
-        self.savefile('./results/'+ 'epc_import_args_'+str(uuid.uuid4())+'.json' , GlobalResultsDTO.globalobjectimportfileinfomap, 'import configurations')
+        if save_results:
+            self.savefile('./results/'+ 'epc_import_args_'+str(uuid.uuid4())+'.json' , GlobalResultsDTO.globalobjectimportfileinfomap, 'import configurations')
