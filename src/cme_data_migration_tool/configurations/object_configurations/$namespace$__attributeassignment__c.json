@@ -63,7 +63,9 @@
         "$namespace$__categorydisplaysequence__c",
         "$namespace$__categoryname__c",
         "$namespace$__attributedisplayname__c",
-        "$namespace$__attributegrouptype__c"
+        "$namespace$__attributegrouptype__c",
+        "$namespace$__attributeshouldincludeintrimmode__c",
+        "$namespace$__categoryshouldincludeintrimmode__c"
     ],
     "createablefields": [],
     "referencefields": [
@@ -102,6 +104,12 @@
             "fieldobject": "$namespace$__picklist__c",
             "standard": false,
             "export": false
+        }
+    ],
+    "polymorphicreferencefields": [
+        {
+            "field": "$namespace$__objectid__c",
+            "typefield": "$namespace$__objecttype__c"
         }
     ],
     "referencetofieldmapping": {

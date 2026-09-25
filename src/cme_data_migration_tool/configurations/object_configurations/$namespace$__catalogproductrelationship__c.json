@@ -2,7 +2,9 @@
     "objectname": "$namespace$__catalogproductrelationship__c",
     "datafieldstomigrate": [
         "name",
+        "$namespace$__effectivedatetime__c",
         "$namespace$__effectivedate__c",
+        "$namespace$__enddatetime__c",
         "$namespace$__enddate__c",
         "$namespace$__isactive__c",
         "$namespace$__sequencenumber__c"

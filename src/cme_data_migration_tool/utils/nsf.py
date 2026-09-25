@@ -18,6 +18,12 @@ class nsf():
         return head + replace_with + tail
     
     @staticmethod
+    def lowerkeys(result):
+        if isinstance(result, dict):
+            return {k.lower(): nsf.lowerkeys(v) for k, v in result.items()}
+        return result
+
+    @staticmethod
     def cleanup(source_string):
         result = nsf.replace_last(source_string, "__c", "")
         result = nsf.replace_last(result, "__r", "")

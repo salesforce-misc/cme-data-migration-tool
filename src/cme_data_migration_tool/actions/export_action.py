@@ -9,6 +9,7 @@ from src.cme_data_migration_tool.dtos.configurations_dtos.org_config_dto import 
 from src.cme_data_migration_tool.dtos.runtime_dtos.global_results_dto import GlobalResultsDTO
 from src.cme_data_migration_tool.utils.nsf import nsf
 from src.cme_data_migration_tool.services.export_bundle import ExportBundle
+from src.cme_data_migration_tool.services.export_catalog import ExportCatalog
 
 
 class ExportAction(BaseAction):
@@ -24,8 +25,13 @@ class ExportAction(BaseAction):
         if self.config == "sobject":
             self.finalexport(self.ids, self.object)
             self.savefile('./results/'+ 'epc_import_args_'+str(uuid.uuid4())+'.json' , GlobalResultsDTO.globalobjectimportfileinfomap, 'import configurations')
-        elif self.object == "product2" or self.object == "vlocity_cmt__promotion__c":
+        elif self.object == "$namespace$__catalog__c":
+            ExportCatalog().export(self.object, self.ids)
+        elif self.object == "product2":
             ExportBundle().export(self.object, self.ids)
+        elif self.object == "$namespace$__promotion__c":
+            ExportCatalog().export_promotions(self.ids)
+            self.savefile('./results/'+ 'epc_import_args_'+str(uuid.uuid4())+'.json' , GlobalResultsDTO.globalobjectimportfileinfomap, 'import configurations')
         else:
             print("Invalid Input, please specify a valid object to export")
 

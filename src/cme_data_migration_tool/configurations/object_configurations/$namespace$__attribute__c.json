@@ -22,7 +22,8 @@
         "$namespace$__value__c",
         "$namespace$__isdefaulthidden__c",
         "$namespace$__globalkey__c",
-        "$namespace$__isnotassetizable__c"
+        "$namespace$__isnotassetizable__c",
+        "$namespace$__shouldincludeintrimmode__c"
     ],
     "readonlyfields": [
         "id",
@@ -30,9 +31,9 @@
         "systemmodstamp",
         "lastvieweddate",
         "lastreferenceddate",
-        "$namespace$__attributecategoryname__c",
         "$namespace$__autocode__c",
-        "$namespace$__attributecategorycode__c"
+        "$namespace$__attributecategorycode__c",
+        "$namespace$__attributecategoryname__c"
     ],
     "createablefields": [],
     "referencefields": [

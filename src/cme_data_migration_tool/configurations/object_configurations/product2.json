@@ -19,14 +19,6 @@
         "displayurl",
         "quantityunitofmeasure",
         "stockkeepingunit",
-        "transferrecordmode",
-        "availabilitydate",
-        "discontinueddate",
-        "endoflifedate",
-        "helptext",
-        "isassetizable",
-        "configureduringsale",
-        "issoldonlywithotherprods",
         "$namespace$__attributedefaultvalues__c",
         "$namespace$__attributemetadata__c",
         "$namespace$__attributerules__c",
@@ -35,7 +27,6 @@
         "$namespace$__endoflifedate__c",
         "$namespace$__fulfilmentstartdate__c",
         "$namespace$__globalgroupkey__c",
-        "$namespace$__globalkey__c",
         "$namespace$__helptext__c",
         "$namespace$__imageid__c",
         "$namespace$__isconfigurable__c",
@@ -63,7 +54,10 @@
         "$namespace$__scope__c",
         "$namespace$__timetolive__c",
         "$namespace$__categorydata__c",
-        "$namespace$__iscustomersubscription__c"
+        "$namespace$__iscustomersubscription__c",
+        "$namespace$__mainfeaturequantityuom__c",
+        "$namespace$__mainfeaturequantity__c",
+        "$namespace$__mainfeaturetermindays__c"
     ],
     "readonlyfields": [
         "id",
@@ -72,24 +66,16 @@
         "isarchived",
         "lastvieweddate",
         "lastreferenceddate",
-        "specificationtype",
         "$namespace$__objecttypename__c",
         "$namespace$__parentclasscode__c",
-        "$namespace$__productspecname__c"
+        "$namespace$__productspecname__c",
+        "$namespace$__globalkey__c"
     ],
-    "createablefields": [
-        "type"
-    ],
+    "createablefields": [],
     "referencefields": [
         {
             "field": "recordtypeid",
             "fieldobject": "recordtype",
-            "standard": true,
-            "export": false
-        },
-        {
-            "field": "sourceproductid",
-            "fieldobject": "product2",
             "standard": true,
             "export": false
         },
@@ -133,9 +119,6 @@
     "referencetofieldmapping": {
         "recordtype": "recordtypeid",
         "externaldatasource": "externaldatasourceid",
-        "basedon": "basedonid",
-        "sourceproduct": "sourceproductid",
-        "seller": "sellerid",
         "$namespace$__classid__r": "$namespace$__classid__c",
         "$namespace$__defaultimageid__r": "$namespace$__defaultimageid__c",
         "$namespace$__objecttypeid__r": "$namespace$__objecttypeid__c",

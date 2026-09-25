@@ -22,8 +22,7 @@
         "isdeleted",
         "isarchived"
     ],
-    "createablefields": [
-    ],
+    "createablefields": [],
     "referencefields": [
         {
             "field": "pricebook2id",
@@ -40,8 +39,7 @@
     ],
     "referencetofieldmapping": {
         "pricebook2": "pricebook2id",
-        "product2": "product2id",
-        "productsellingmodel": "productsellingmodelid"
+        "product2": "product2id"
     },
     "childobjectstomigrate": []
 }

@@ -22,6 +22,7 @@ class QueryUtils:
 
     @classmethod
     def query_by_matching_keys(cls, objconfig, orgconfig, matchingkeyrecords, queryrecordprocessor):
+        all_results = {}
         for i in range(0, len(matchingkeyrecords), 500):
             matchingkeys_to_query_chunk = matchingkeyrecords[i:i + 500]
             all_matching_key_conditions = []
@@ -34,7 +35,8 @@ class QueryUtils:
             final_matching_key_condition = "(" + (" ) OR ( ".join(all_matching_key_conditions))  + ")"
             countquery = "SELECT count() FROM {} where {}".format(nsf.unmask(orgconfig, objconfig.objectname), final_matching_key_condition)
             dataquery = "SELECT "+ objconfig.getmatchingfieldsstring(orgconfig) +" FROM {} where {}".format(nsf.unmask(orgconfig, objconfig.objectname), final_matching_key_condition)
-            return QueryUtils.query(objconfig, orgconfig, countquery, dataquery, queryrecordprocessor)
+            all_results.update(QueryUtils.query(objconfig, orgconfig, countquery, dataquery, queryrecordprocessor))
+        return all_results
     
     @classmethod
     def query(cls, objconfig, orgconfig, countquery, dataquery, queryrecordprocessor):
@@ -55,16 +57,16 @@ class QueryUtils:
     def generatematchingkeyinfo(cls, objectname, datafields):
         objectmatchingkeysmap = MatchingKeysDTO.getinstance()
         matchingkeyfields = objectmatchingkeysmap.matching_keys[objectname]
-        matchingkey = ''
         matchingkeyqueryfieldswithdata = {}
+        matchingkeyparts = []
         for matchingkeyfield in matchingkeyfields:
-            if matchingkeyfield in datafields.keys():
-                if matchingkeyfield not in datafields.keys() or datafields[matchingkeyfield] == None:
-                    print('matching key missing for object  {} and matching key is {} with complete data fields as {}'.format(objectname, matchingkeyfield, json.dumps(datafields)))
-                matchingkey = datafields[matchingkeyfield] if matchingkey == '' else matchingkey + '-' + datafields[matchingkeyfield]
-                matchingkeyqueryfieldswithdata[matchingkeyfield] = datafields[matchingkeyfield]
-            else:
-                raise KeyError("Matching keys not found for object = {} with id = {} and relevant matching key field is {}".format(objectname, datafields["id"], matchingkeyfield))
+            fieldvalue = datafields.get(matchingkeyfield)
+            if fieldvalue is None:
+                print('matching key field missing or null for object {} and matching key field is {} with complete data fields as {}'.format(objectname, matchingkeyfield, json.dumps(datafields)))
+                continue
+            matchingkeyparts.append(fieldvalue)
+            matchingkeyqueryfieldswithdata[matchingkeyfield] = fieldvalue
+        matchingkey = '-'.join(matchingkeyparts)
         matchingkeymap = {
             'matchingkey' : matchingkey,
             'matchingkeyqueryfieldswithdata' : matchingkeyqueryfieldswithdata,

@@ -4,8 +4,6 @@
         "name",
         "isactive",
         "description",
-        "validfrom",
-        "validto",
         "$namespace$__isdefault__c",
         "$namespace$__isopportunitydefault__c",
         "$namespace$__isorderdefault__c",
