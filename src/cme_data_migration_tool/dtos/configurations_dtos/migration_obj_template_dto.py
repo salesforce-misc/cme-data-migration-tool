@@ -30,6 +30,7 @@ class MigrationObjTemplateDTO(BaseDTO):
         self.referencetofieldmapping = kwargs.get("referencetofieldmapping")
         self.referencefieldtoexportability = {}
         self.rawfieldtoobject = {}
+        self.polymorphicfieldtotypefield = {}
         config_referencefields = kwargs.get("referencefields")
 
         for config_referencefield in config_referencefields:
@@ -38,6 +39,9 @@ class MigrationObjTemplateDTO(BaseDTO):
             self.referencefieldtoobject[referenceitemdto.field_ref_obj] = referenceitemdto.fieldobject
             self.referencefieldtoexportability[referenceitemdto.field_ref_obj] = referenceitemdto.export
             self.rawfieldtoobject[referenceitemdto.field] = referenceitemdto.fieldobject
+
+        for config_polymorphicfield in kwargs.get("polymorphicreferencefields", []):
+            self.polymorphicfieldtotypefield[config_polymorphicfield["field"]] = config_polymorphicfield["typefield"]
 
         config_childreferences = kwargs.get("childobjectstomigrate")
         for config_childreference in config_childreferences:

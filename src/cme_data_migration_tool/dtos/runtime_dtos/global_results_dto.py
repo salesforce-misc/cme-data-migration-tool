@@ -11,6 +11,7 @@ class GlobalResultsDTO():
     new_record_count = {}
     globalobjectimportfileinfomap = {}
     destination_id_by_matching_key = {}
+    matching_key_by_source_id = {}
 
     @staticmethod
     def get_import_sequence():

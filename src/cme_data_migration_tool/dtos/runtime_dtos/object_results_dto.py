@@ -13,16 +13,23 @@ from src.cme_data_migration_tool.dtos.runtime_dtos.global_results_dto import Glo
 class ObjectResultsDTO(BaseDTO):
 
     @staticmethod
+    def get_reference_target_and_key(objectconfig, field, value):
+        if field in objectconfig.polymorphicfieldtotypefield and isinstance(value, str) and '::' in value:
+            referencedobject, matchingkeyvalue = value.split('::', 1)
+            return referencedobject, matchingkeyvalue
+        return objectconfig.rawfieldtoobject.get(field), value
+
+    @staticmethod
     def resolve_reference_values(objectconfig, fielddict):
         resolved = {}
         for field, value in fielddict.items():
-            referencedobject = objectconfig.rawfieldtoobject.get(field)
+            referencedobject, matchingkeyvalue = ObjectResultsDTO.get_reference_target_and_key(objectconfig, field, value)
             if referencedobject is None:
                 resolved[field] = value
                 continue
             if value is None:
                 continue
-            resolved_id = GlobalResultsDTO.destination_id_by_matching_key.get(referencedobject, {}).get(value)
+            resolved_id = GlobalResultsDTO.destination_id_by_matching_key.get(referencedobject, {}).get(matchingkeyvalue)
             if resolved_id is None:
                 continue
             resolved[field] = resolved_id
@@ -101,13 +108,13 @@ class ObjectResultsDTO(BaseDTO):
                 if '.' not in unmasked_field and unmasked_field not in real_org_fields:
                     dropped_fields.add(field)
                     continue
-                referencedobject = self.objectconfig.rawfieldtoobject.get(field)
+                referencedobject, matchingkeyvalue = ObjectResultsDTO.get_reference_target_and_key(self.objectconfig, field, value)
                 if referencedobject is not None:
                     if value is None:
                         continue
-                    resolved_id = GlobalResultsDTO.destination_id_by_matching_key.get(referencedobject, {}).get(value)
+                    resolved_id = GlobalResultsDTO.destination_id_by_matching_key.get(referencedobject, {}).get(matchingkeyvalue)
                     if resolved_id is None:
-                        print('unable to resolve reference field {} on {} - matching key "{}" not found in destination org (referenced object may not have been imported yet)'.format(field, self.objectconfig.objectname, value))
+                        print('unable to resolve reference field {} on {} - matching key "{}" not found in destination org (referenced object may not have been imported yet)'.format(field, self.objectconfig.objectname, matchingkeyvalue))
                         continue
                     value = resolved_id
                 if existing and (field not in self.objectconfig.readonlyfields) and (field not in self.objectconfig.createablefields):

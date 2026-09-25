@@ -212,6 +212,8 @@ class ExportBundle():
         self.finalexport(self.finalpciids, "$namespace$__productchilditem__c")
         self.finalpciids = []
 
+        self.finalexport(list(self.finalobjectclassids), "$namespace$__objectclass__c")
+
         print('prepping data to export for attribute assignments, attribtues, categories, please wait while we start exporting , this may take few seconds')
         self.getallattributeassignments()
 

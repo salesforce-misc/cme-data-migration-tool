@@ -106,6 +106,12 @@
             "export": false
         }
     ],
+    "polymorphicreferencefields": [
+        {
+            "field": "$namespace$__objectid__c",
+            "typefield": "$namespace$__objecttype__c"
+        }
+    ],
     "referencetofieldmapping": {
         "$namespace$__attributecategoryid__r": "$namespace$__attributecategoryid__c",
         "$namespace$__attributeid__r": "$namespace$__attributeid__c",

@@ -22,6 +22,7 @@ class QueryUtils:
 
     @classmethod
     def query_by_matching_keys(cls, objconfig, orgconfig, matchingkeyrecords, queryrecordprocessor):
+        all_results = {}
         for i in range(0, len(matchingkeyrecords), 500):
             matchingkeys_to_query_chunk = matchingkeyrecords[i:i + 500]
             all_matching_key_conditions = []
@@ -34,7 +35,8 @@ class QueryUtils:
             final_matching_key_condition = "(" + (" ) OR ( ".join(all_matching_key_conditions))  + ")"
             countquery = "SELECT count() FROM {} where {}".format(nsf.unmask(orgconfig, objconfig.objectname), final_matching_key_condition)
             dataquery = "SELECT "+ objconfig.getmatchingfieldsstring(orgconfig) +" FROM {} where {}".format(nsf.unmask(orgconfig, objconfig.objectname), final_matching_key_condition)
-            return QueryUtils.query(objconfig, orgconfig, countquery, dataquery, queryrecordprocessor)
+            all_results.update(QueryUtils.query(objconfig, orgconfig, countquery, dataquery, queryrecordprocessor))
+        return all_results
     
     @classmethod
     def query(cls, objconfig, orgconfig, countquery, dataquery, queryrecordprocessor):

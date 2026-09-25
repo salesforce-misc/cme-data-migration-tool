@@ -52,9 +52,23 @@ class BaseService:
             else:
                 fieldresult[key] = value
 
+        for polyfield, typefield in objectconfig.polymorphicfieldtotypefield.items():
+            sourceid = fieldresult.get(polyfield)
+            typevalue = fieldresult.get(typefield)
+            if sourceid is None or typevalue is None:
+                continue
+            maskedtargetobject = nsf.mask(orgconfig, typevalue)
+            targetmatchingkey = GlobalResultsDTO.matching_key_by_source_id.get(maskedtargetobject, {}).get(sourceid)
+            if targetmatchingkey is None:
+                print('unable to resolve polymorphic reference field {} on {} - source id "{}" (type {}) not yet exported'.format(polyfield, objectname, sourceid, maskedtargetobject))
+                continue
+            fieldresult[polyfield] = maskedtargetobject + '::' + targetmatchingkey
+
         matchingkeydetails = QueryUtils.generatematchingkeyinfo(objectname, fieldresult)
         matchingkeyinfomap[matchingkeydetails['matchingkey']] = matchingkeydetails['matchingkeyqueryfieldswithdata']
         recordresult["matchingkeyinfo"] = matchingkeydetails
+        if fieldresult.get('id') is not None:
+            GlobalResultsDTO.matching_key_by_source_id.setdefault(objectname, {})[fieldresult['id']] = matchingkeydetails['matchingkey']
         return recordresult
     
     def savefile(self, fpath, result, resultname):
